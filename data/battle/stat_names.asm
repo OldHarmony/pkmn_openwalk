@@ -1,7 +1,7 @@
 StatsTextStrings:
-	db "ATTACK@"
-	db "DEFENSE@"
-	db "SPEED@"
-	db "SPECIAL@"
-	db "ACCURACY@"
-	db "EVADE@"
+	db "ANGR@"
+	db "VERT@"
+	db "INIT@"
+	db "SPEZ@"
+	db "GENA@"
+	db "FLU@"

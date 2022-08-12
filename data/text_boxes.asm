@@ -28,7 +28,7 @@ TextBoxTextAndCoordTable:
 	text_box_text USE_TOSS_MENU_TEMPLATE,            13, 10, 19, 14, UseTossText,             15, 11
 	text_box_text JP_SAVE_MESSAGE_MENU_TEMPLATE,      0,  0,  7,  5, JapaneseSaveMessageText,  2,  2
 	text_box_text JP_SPEED_OPTIONS_MENU_TEMPLATE,     0,  6,  5, 10, JapaneseSpeedOptionsText, 2,  7
-	text_box_text BATTLE_MENU_TEMPLATE,               8, 12, 19, 17, BattleMenuText,          10, 14
+	text_box_text BATTLE_MENU_TEMPLATE,               6, 12, 19, 17, BattleMenuText,           8, 14
 	text_box_text SAFARI_BATTLE_MENU_TEMPLATE,        0, 12, 19, 17, SafariZoneBattleMenuText, 2, 14
 	text_box_text SWITCH_STATS_CANCEL_MENU_TEMPLATE, 11, 11, 19, 17, SwitchStatsCancelText,   13, 12
 	text_box_text BUY_SELL_QUIT_MENU_TEMPLATE,        0,  0, 10,  6, BuySellQuitText,          2,  1
@@ -37,15 +37,15 @@ TextBoxTextAndCoordTable:
 	text_box_text JP_POKEDEX_MENU_TEMPLATE,          11,  8, 19, 17, JapanesePokedexMenu,     12, 10
 
 BuySellQuitText:
-	db   "BUY"
-	next "SELL"
-	next "QUIT@"
+	db   "KAUF"
+	next "VERKAUF"
+	next "TSCHÜSS!@"
 
 	db "@" ; unused
 
 UseTossText:
-	db   "USE"
-	next "TOSS@"
+	db   "OK"
+	next "MÜLL@"
 
 JapaneseSaveMessageText:
 	db   "きろく"
@@ -56,7 +56,7 @@ JapaneseSpeedOptionsText:
 	next "おそい@"
 
 MoneyText:
-	db "MONEY@"
+	db "GELD@"
 
 JapaneseMochimonoText:
 	db "もちもの@"
@@ -66,17 +66,17 @@ JapaneseMainMenuText:
 	next "さいしょから@"
 
 BattleMenuText:
-	db   "FIGHT <PK><MN>"
-	next "ITEM  RUN@"
+	db   "KMPF <PK><MN>"
+	next "ITEM FLUCHT@"
 
 SafariZoneBattleMenuText:
-	db   "BALL×       BAIT"
-	next "THROW ROCK  RUN@"
+	db   "BALL×      KÖDER"
+	next "STEIN      FLUCHT@"
 
 SwitchStatsCancelText:
-	db   "SWITCH"
-	next "STATS"
-	next "CANCEL@"
+	db   "TAUSCH"
+	next "STATUS"
+	next "ZURÜCK@"
 
 JapaneseAhText:
 	db "アッ！@"

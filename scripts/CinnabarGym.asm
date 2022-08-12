@@ -24,10 +24,10 @@ CinnabarGymScript_75759:
 	jp LoadGymLeaderAndCityName
 
 .CityName:
-	db "CINNABAR ISLAND@"
+	db "ZINNOBERINSEL@"
 
 .LeaderName:
-	db "BLAINE@"
+	db "PYRO@"
 
 CinnabarGymScript_75792:
 	xor a

@@ -281,6 +281,10 @@ PewterCityText_19431:
 
 PewterCityText5:
 	text_asm
+	; DE VERSION - BUGFIX???
+	ld a,$FC
+	ld [wJoyIgnore],a
+	; END
 	ld hl, PewterCityText_1945d
 	call PrintText
 	xor a
