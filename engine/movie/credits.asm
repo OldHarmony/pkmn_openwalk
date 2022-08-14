@@ -257,12 +257,6 @@ Credits:
 	jp FadeInCreditsText
 
 TheEndTextString:
-; EN VERSION
-; "T H E  E N D"
-;	db $60," ",$62," ",$64,"  ",$64," ",$66," ",$68,"@"
-;	db $61," ",$63," ",$65,"  ",$65," ",$67," ",$69,"@"
-
-; DE VERSION - WHY DIFFERENT?
 ; "T H E  E N D"
 	db $64," ",$66," ",$68," ",$64,"@"
 	db $65," ",$67," ",$69," ",$65,"@"

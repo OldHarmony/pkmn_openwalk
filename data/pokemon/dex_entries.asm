@@ -329,7 +329,7 @@ LaprasDexEntry:
 	text_end
 
 ArcanineDexEntry:
-	db "LEGENDÃ„R@"
+	db "LEGENDÄR@"
 	db 19
 	dw 1550
 	text_far _ArcanineDexEntry
@@ -392,7 +392,7 @@ BlastoiseDexEntry:
 	text_end
 
 PinsirDexEntry:
-	db "KNEIFKÃ„FER@"
+	db "KNEIFKÄFER@"
 	db 15
 	dw 550
 	text_far _PinsirDexEntry
@@ -959,7 +959,7 @@ MewtwoDexEntry:
 	text_end
 
 SnorlaxDexEntry:
-	db "TAGTRÃ„UMER@"
+	db "TAGTRÄUMER@"
 	db 21
 	dw 4600
 	text_far _SnorlaxDexEntry
@@ -1064,7 +1064,7 @@ PidgeotDexEntry:
 	text_end
 
 StarmieDexEntry:
-	db "MYSTERIÃ–S@"
+	db "MYSTERIÖS@"
 	db 11
 	dw 800
 	text_far _StarmieDexEntry
@@ -1183,7 +1183,7 @@ CharmanderDexEntry:
 	text_end
 
 SquirtleDexEntry:
-	db "MINIKRÃ–TE@"
+	db "MINIKRÖTE@"
 	db 5
 	dw 90
 	text_far _SquirtleDexEntry
@@ -1197,7 +1197,7 @@ CharmeleonDexEntry:
 	text_end
 
 WartortleDexEntry:
-	db "KRÃ–TE@"
+	db "KRÖTE@"
 	db 10
 	dw 225
 	text_far _WartortleDexEntry

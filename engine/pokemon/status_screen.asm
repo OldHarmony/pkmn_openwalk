@@ -340,8 +340,6 @@ ENDC
 	ld b, a ; Number of moves ?
 	hlcoord 11, 10
 	ld de, SCREEN_WIDTH * 2
-	; EN VERSION - ld a, "<BOLD_P>"
-	; EN VERSION - call StatusScreen_PrintPP ; Print "PP"
 	ld a, "A"
 	call StatusScreen_PrintAP ; Print "AP"
 	ld a, b

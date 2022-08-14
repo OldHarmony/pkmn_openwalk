@@ -157,31 +157,31 @@
 	charmap "ù",         $bd
 	charmap "ß",         $be
 	charmap "ç",         $bf
-	charmap "Ä",         $c0
-	charmap "Ö",         $c1
-	charmap "Ü",         $c2
-	charmap "ä",         $c3
-	charmap "ö",         $c4
-	charmap "ü",         $c5
-	charmap "ë",         $c6
-	charmap "ï",         $c7
-	charmap "â",         $c8
-	charmap "ô",         $c9
-	charmap "û",         $ca
-	charmap "ê",         $cb
-	charmap "î",         $cc
-	charmap "c'",        $d4
-	charmap "d'",        $d5
-	charmap "j'",        $d6
-	charmap "l'",        $d7
-	charmap "m'",        $d8
-	charmap "n'",        $d9
-	charmap "p'",        $da
-	charmap "s'",        $db
-	charmap "'s",        $dc
-	charmap "t'",        $dd
-	charmap "u'",        $de
-	charmap "y'",        $df
+	charmap "Ä",         $d0
+	charmap "Ö",         $d1
+	charmap "Ü",         $d2
+	charmap "ä",         $d3
+	charmap "ö",         $d4
+	charmap "ü",         $d5
+	charmap "ë",         $d6
+	charmap "ï",         $d7
+	charmap "â",         $d8
+	charmap "ô",         $d9
+	charmap "û",         $da
+	charmap "ê",         $db
+	charmap "î",         $dc
+	charmap "c'",        $dd
+	charmap "d'",        $de
+	charmap "j'",        $df
+	charmap "l'",        $c9
+	charmap "m'",        $ea
+	charmap "n'",        $eb
+	charmap "p'",        $ca
+	charmap "s'",        $cb
+	charmap "'s",        $cc
+	charmap "t'",        $cd
+	charmap "u'",        $ce
+	charmap "y'",        $cf
 
 	charmap "'",         $e0
 	charmap "<PK>",      $e1
@@ -194,8 +194,8 @@
 	charmap ".",         $e8
 
 	charmap "ァ",         $e9 ; katakana small a, unused
-	charmap "ゥ",         $ea ; katakana small u, unused
-	charmap "ェ",         $eb ; katakana small e, unused
+	;charmap "ゥ",        $ea ; katakana small u, unused
+	;charmap "ェ",        $eb ; katakana small e, unused
 
 	charmap "▷",         $ec
 	charmap "▶",         $ed

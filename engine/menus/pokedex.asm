@@ -510,31 +510,6 @@ ShowPokedexDataInternal:
 	pop bc
 	pop af
 
-; EN VERSION
-;	ld a, c
-;	and a
-;	jp z, .waitForButtonPress ; if the pokemon has not been owned, don't print the height, weight, or description
-;	inc de ; de = address of feet (height)
-;	ld a, [de] ; reads feet, but a is overwritten without being used
-;	hlcoord 12, 6
-;	lb bc, 1, 2
-;	call PrintNumber ; print feet (height)
-;	ld a, "′"
-;	ld [hl], a
-;	inc de
-;	inc de ; de = address of inches (height)
-;	hlcoord 15, 6
-;	lb bc, LEADING_ZEROES | 1, 2
-;	call PrintNumber ; print inches (height)
-;	ld a, "″"
-;	ld [hl], a
-; now print the weight (note that weight is stored in tenths of pounds internally)
-;	inc de
-;	inc de
-;	inc de ; de = address of upper byte of weight
-;	push de
-
-; DE VERSION
 	ld a, c
 	and a
 	jp z, .waitForButtonPress ; if the pokemon has not been owned, don't print the height, weight, or description
