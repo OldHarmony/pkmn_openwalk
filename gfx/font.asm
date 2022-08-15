@@ -34,7 +34,6 @@ NintendoCopyrightLogoGraphics: INCBIN "gfx/splash/copyright.2bpp"
 GamefreakLogoGraphics: INCBIN "gfx/title/gamefreak_inc.2bpp"
 GamefreakLogoGraphicsEnd:
 
-; DE VERSION - WHAT IS THIS???
 Unk9Graphic: INCBIN "gfx/unk_9.2bpp"
 Unk9GraphicEnd:
 
