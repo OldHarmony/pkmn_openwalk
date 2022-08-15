@@ -173,7 +173,7 @@
 	charmap "c'",        $dd
 	charmap "d'",        $de
 	charmap "j'",        $df
-	charmap "l'",        $c9
+	charmap "l'",        $e5
 	charmap "m'",        $ea
 	charmap "n'",        $eb
 	charmap "p'",        $ca
