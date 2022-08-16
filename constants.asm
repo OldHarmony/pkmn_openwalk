@@ -1,4 +1,4 @@
-GEN_2_GRAPHICS EQU 0
+GEN_2_GRAPHICS EQU 1
 
 INCLUDE "charmap.asm"
 
