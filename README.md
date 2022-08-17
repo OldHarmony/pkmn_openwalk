@@ -1,12 +1,11 @@
-# Pokémon Red and Blue [![Build Status][travis-badge]][travis]
+# Pokémon: Rote Edition and Blaue Edition [![Build Status][travis-badge]][travis]
 
-This is a disassembly of Pokémon Red and Blue.
+This is a disassembly of Pokémon: Rote Edition and Blaue Edition.
 
 It builds the following ROMs:
 
-- Pokemon Red (UE) [S][!].gb `sha1: ea9bcae617fdf159b045185467ae58b2e4a48b9a`
-- Pokemon Blue (UE) [S][!].gb `sha1: d7037c83e1ae5b39bde3c30787637ba1d4c48ce2`
-- BLUEMONS.GB (debug build) `sha1: 5b1456177671b79b263c614ea0e7cc9ac542e9c4`
+    Pokemon - Rote Edition (G) [S][!].gb md5: 8ed0e8d45a81ca34de625d930148a512
+    Pokemon - Blaue Edition (G) [S][!].gb md5: a1ec7f07c7b4251d5fafc50622d546f8
 
 To set up the repository, see [**INSTALL.md**](INSTALL.md).
 
