@@ -4,8 +4,8 @@ This is a disassembly of Pokémon: Rote Edition and Blaue Edition.
 
 It builds the following ROMs:
 
-    Pokemon - Rote Edition (G) [S][!].gb md5: 8ed0e8d45a81ca34de625d930148a512
-    Pokemon - Blaue Edition (G) [S][!].gb md5: a1ec7f07c7b4251d5fafc50622d546f8
+* pokered.gbc md5: 572A3FEC14C513EA0FD6C34657CAA4A0
+* pokeblue.gbc md5: CFDB054DCCB8DE068FC1D65D45AE5A0B
 
 To set up the repository, see [**INSTALL.md**](INSTALL.md).
 
