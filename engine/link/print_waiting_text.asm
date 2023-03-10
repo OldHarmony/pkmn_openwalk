@@ -1,7 +1,7 @@
 PrintWaitingText_orig: ; Name changed so color hack can hijack this
 	hlcoord 3, 10
 	ld b, 1
-	ld c, 11
+	ld c, 13
 	ld a, [wIsInBattle]
 	and a
 	jr z, .trade
@@ -18,4 +18,4 @@ PrintWaitingText_orig: ; Name changed so color hack can hijack this
 	jp DelayFrames
 
 WaitingText:
-	db "Waiting...!@"
+	db "BITTE WARTEN!@"

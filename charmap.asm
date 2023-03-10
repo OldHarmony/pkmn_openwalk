@@ -75,8 +75,9 @@
 ; Actual characters (from other graphics files)
 
 	; needed for ShowPokedexDataInternal (see engine/menus/pokedex.asm)
-	charmap "′",         $60 ; gfx/pokedex/pokedex.png
-	charmap "″",         $61 ; gfx/pokedex/pokedex.png
+	charmap "<M>",       $60 ; gfx/pokedex/pokedex.png
+	charmap "<K>",       $61 ; gfx/pokedex/pokedex.png
+	charmap "<G>",       $62 ; gfx/pokedex/pokedex.png
 
 	; needed for StatusScreen (see engine/pokemon/status_screen.asm)
 	charmap "<BOLD_P>",  $72 ; gfx/font/P.1bpp
@@ -150,28 +151,51 @@
 	charmap "y",         $b8
 	charmap "z",         $b9
 
-	charmap "é",         $ba
-	charmap "'d",        $bb
-	charmap "'l",        $bc
-	charmap "'s",        $bd
-	charmap "'t",        $be
-	charmap "'v",        $bf
+	charmap "à",         $ba
+	charmap "è",         $bb
+	charmap "é",         $bc
+	charmap "ù",         $bd
+	charmap "ß",         $be
+	charmap "ç",         $bf
+	charmap "Ä",         $d0
+	charmap "Ö",         $d1
+	charmap "Ü",         $d2
+	charmap "ä",         $d3
+	charmap "ö",         $d4
+	charmap "ü",         $d5
+	charmap "ë",         $d6
+	charmap "ï",         $d7
+	charmap "â",         $d8
+	charmap "ô",         $d9
+	charmap "û",         $da
+	charmap "ê",         $db
+	charmap "î",         $dc
+	charmap "c'",        $dd
+	charmap "d'",        $de
+	charmap "j'",        $df
+	charmap "l'",        $e5
+	charmap "m'",        $ea
+	charmap "n'",        $eb
+	charmap "p'",        $ca
+	charmap "s'",        $cb
+	charmap "'s",        $cc
+	charmap "t'",        $cd
+	charmap "u'",        $ce
+	charmap "y'",        $cf
 
 	charmap "'",         $e0
 	charmap "<PK>",      $e1
 	charmap "<MN>",      $e2
 	charmap "-",         $e3
-
-	charmap "'r",        $e4
-	charmap "'m",        $e5
+	charmap "+",         $e4
 
 	charmap "?",         $e6
 	charmap "!",         $e7
 	charmap ".",         $e8
 
 	charmap "ァ",         $e9 ; katakana small a, unused
-	charmap "ゥ",         $ea ; katakana small u, unused
-	charmap "ェ",         $eb ; katakana small e, unused
+	;charmap "ゥ",        $ea ; katakana small u, unused
+	;charmap "ェ",        $eb ; katakana small e, unused
 
 	charmap "▷",         $ec
 	charmap "▶",         $ed
