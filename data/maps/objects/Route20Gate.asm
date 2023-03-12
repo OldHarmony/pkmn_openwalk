@@ -10,6 +10,6 @@ Route20Gate_Object:
 	def_bg_events
 
 	def_object_events
-	object_event  4,  3, SPRITE_YOUNGSTER, WALK, LEFT_RIGHT, 2 ; person
+	object_event  4,  3, SPRITE_YOUNGSTER, WALK, LEFT_RIGHT, 1 ; person
 
 	def_warps_to ROUTE_20_GATE

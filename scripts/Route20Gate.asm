@@ -5,5 +5,5 @@ Route20Gate_TextPointers:
 	dw Route20GateText1
 
 Route20GateText1:
-	text_far _Route2GateText2
+	text_far _Route20GateText1
 	text_end
