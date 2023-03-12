@@ -287,6 +287,11 @@ INCLUDE "data/maps/headers/SSAnne3F.asm"
 INCLUDE "scripts/SSAnne3F.asm"
 INCLUDE "data/maps/objects/SSAnne3F.asm"
 SSAnne3F_Blocks: INCBIN "maps/SSAnne3F.blk"
+ 
+INCLUDE "data/maps/headers/Route20Gate.asm"
+INCLUDE "scripts/Route20Gate.asm"
+INCLUDE "data/maps/objects/Route20Gate.asm"
+Route20Gate_Blocks: INCBIN "maps/Route20Gate.blk"
 
 INCLUDE "data/maps/headers/VictoryRoad3F.asm"
 INCLUDE "scripts/VictoryRoad3F.asm"
