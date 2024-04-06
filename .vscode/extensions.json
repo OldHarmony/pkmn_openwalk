@@ -1,0 +1,7 @@
+{
+    "recommendations": [
+        "emulicious.emulicious-debugger",
+        "donaldhays.rgbds-z80",
+        "ms-vscode.makefile-tools"
+    ]
+}

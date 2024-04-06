@@ -1,0 +1,34 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build",
+            "type": "shell",
+            "command": "make",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": "$rgbdserror"
+        },
+        {
+            "label": "Build && Decompile && create Patch",
+            "type": "shell",
+            "command": "make && rm -Rf /root/mgbdis/disassembly && cp pokeblue__hc007_bga_v2.gbc /root/mgbdis/pokeblue.gbc && cp pokeblue__hc007_bga_v2.sym /root/mgbdis/pokeblue.sym && cd /root/mgbdis && ./mgbdis.py pokeblue.gbc && rm -Rf /root/hc007/disassembly && mv disassembly /root/hc007/disassembly && cd /root/hc007 && git diff > current.patch",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": "$rgbdserror"
+        },
+        {
+            "label": "Clean",
+            "type": "shell",
+            "command": "make clean",
+            "group": "none",
+            "problemMatcher": "$rgbdserror"
+        }
+    ]
+}

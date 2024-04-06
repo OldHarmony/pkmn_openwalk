@@ -1,0 +1,26 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "emulicious-debugger",
+      "request": "launch",
+      "name": "Launch in Emulicious",
+      // "program": "${workspaceFolder}/${command:AskForProgramName}",
+      "program": "${workspaceFolder}/pokeblue_debug.gbc",
+      "port": 58870,
+      "stopOnEntry": true
+    },
+    {
+      "type": "emulicious-debugger",
+      "request": "launch",
+      "name": "HC007_BGA_V2",
+      // "program": "${workspaceFolder}/${command:AskForProgramName}",
+      "program": "${workspaceFolder}/pokeblue__hc007_bga_v2.gbc",
+      "port": 58870,
+      "stopOnEntry": true
+    }
+  ]
+}
