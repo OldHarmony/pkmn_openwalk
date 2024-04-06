@@ -21,7 +21,7 @@ PalletTownScript0:
 	CheckEvent EVENT_FOLLOWED_OAK_INTO_LAB
 	ret nz
 	ld a, [wYCoord]
-	cp 1 ; is player near north exit?
+	cp 0 ; is player near north exit?
 	ret nz
 	xor a
 	ldh [hJoyHeld], a
