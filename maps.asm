@@ -977,6 +977,11 @@ INCLUDE "scripts/VictoryRoad1F.asm"
 INCLUDE "data/maps/objects/VictoryRoad1F.asm"
 VictoryRoad1F_Blocks: INCBIN "maps/VictoryRoad1F.blk"
 
+INCLUDE "data/maps/headers/UndergroundPathPalletTown.asm"
+INCLUDE "scripts/UndergroundPathPalletTown.asm"
+INCLUDE "data/maps/objects/UndergroundPathPalletTown.asm"
+UndergroundPathPalletTown_Blocks: INCBIN "maps/UndergroundPathPalletTown.blk"
+	
 
 SECTION "Maps 17", ROMX
 

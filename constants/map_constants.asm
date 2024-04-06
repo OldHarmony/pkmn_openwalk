@@ -128,7 +128,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const UNUSED_MAP_6A,                  0,  0 ; $6A
 	map_const UNUSED_MAP_6B,                  0,  0 ; $6B
 	map_const VICTORY_ROAD_1F,               10,  9 ; $6C
-	map_const UNUSED_MAP_6D,                  0,  0 ; $6D
+	map_const UNDERGROUND_PATH_PALLETTOWN,    4,  4 ; $6D
 	map_const UNUSED_MAP_6E,                  0,  0 ; $6E
 	map_const UNUSED_MAP_6F,                  0,  0 ; $6F
 	map_const UNUSED_MAP_70,                  0,  0 ; $70

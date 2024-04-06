@@ -112,6 +112,7 @@ MapHSPointers:
 	dw NoHS
 	dw NoHS
 	dw VictoryRoad1FHS
+;	dw UndergroundPathPalletTownHS
 	dw NoHS
 	dw NoHS
 	dw NoHS
