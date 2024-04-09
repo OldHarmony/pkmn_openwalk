@@ -1,0 +1,2 @@
+	map_header UndergroundPathPalletViridian, UNDERGROUND_PATH_PALLETTOWN_VIRIDIANCITY, UNDERGROUND, 0
+	end_map_header

@@ -129,16 +129,16 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const UNUSED_MAP_6B,                  0,  0 ; $6B
 	map_const VICTORY_ROAD_1F,               10,  9 ; $6C
 	map_const UNDERGROUND_PATH_PALLETTOWN,    4,  4 ; $6D
-	map_const UNUSED_MAP_6E,                  0,  0 ; $6E
+	map_const UNDERGROUND_PATH_PALLETTOWN_VIRIDIANCITY, 4,  22 ; $6E
 	map_const UNUSED_MAP_6F,                  0,  0 ; $6F
-	map_const UNUSED_MAP_70,                  0,  0 ; $70
+	map_const UNDERGROUND_PATH_VIRIDIANCITY,  4,  4 ; $70
 	map_const LANCES_ROOM,                   13, 13 ; $71
 	map_const UNUSED_MAP_72,                  0,  0 ; $72
 	map_const UNUSED_MAP_73,                  0,  0 ; $73
 	map_const UNUSED_MAP_74,                  0,  0 ; $74
 	map_const UNUSED_MAP_75,                  0,  0 ; $75
 	map_const HALL_OF_FAME,                   5,  4 ; $76
-	map_const UNDERGROUND_PATH_NORTH_SOUTH,   4, 24 ; $77 ; UndergroundPathNorthSouth.blk is actually 4x23
+	map_const UNDERGROUND_PATH_NORTH_SOUTH,   4, 22 ; $77 ; UndergroundPathNorthSouth.blk is actually 4x23
 	map_const CHAMPIONS_ROOM,                 4,  4 ; $78
 	map_const UNDERGROUND_PATH_WEST_EAST,    25,  4 ; $79
 	map_const CELADON_MART_1F,               10,  4 ; $7A

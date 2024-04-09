@@ -981,7 +981,12 @@ INCLUDE "data/maps/headers/UndergroundPathPalletTown.asm"
 INCLUDE "scripts/UndergroundPathPalletTown.asm"
 INCLUDE "data/maps/objects/UndergroundPathPalletTown.asm"
 UndergroundPathPalletTown_Blocks: INCBIN "maps/UndergroundPathPalletTown.blk"
-	
+
+INCLUDE "data/maps/headers/UndergroundPathPalletViridian.asm"
+INCLUDE "scripts/UndergroundPathPalletViridian.asm"
+INCLUDE "data/maps/objects/UndergroundPathPalletViridian.asm"
+UndergroundPathPalletViridian_Blocks: INCBIN "maps/UndergroundPathPalletViridian.blk"
+			
 
 SECTION "Maps 17", ROMX
 
