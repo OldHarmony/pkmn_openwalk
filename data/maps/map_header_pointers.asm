@@ -113,7 +113,7 @@ MapHeaderPointers::
 	dw UndergroundPathPalletTown_h ; UNUSED_MAP_6D
 	dw UndergroundPathPalletViridian_h ; UNUSED_MAP_6E
 	dw LancesRoom_h ; UNUSED_MAP_6F
-	dw LancesRoom_h ; UNUSED_MAP_70
+	dw UndergroundPathViridianCity_h ; UNUSED_MAP_70
 	dw LancesRoom_h
 	dw LancesRoom_h ; UNUSED_MAP_72
 	dw LancesRoom_h ; UNUSED_MAP_73
