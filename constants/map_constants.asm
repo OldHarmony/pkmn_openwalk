@@ -129,7 +129,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const UNUSED_MAP_6B,                  0,  0 ; $6B
 	map_const VICTORY_ROAD_1F,               10,  9 ; $6C
 	map_const UNDERGROUND_PATH_PALLETTOWN,    4,  4 ; $6D
-	map_const UNDERGROUND_PATH_PALLETTOWN_VIRIDIANCITY, 4,  22 ; $6E
+	map_const UNDERGROUND_PATH_PALLETTOWN_VIRIDIANCITY, 6,  30 ; $6E
 	map_const UNUSED_MAP_6F,                  0,  0 ; $6F
 	map_const UNDERGROUND_PATH_VIRIDIANCITY,  4,  4 ; $70
 	map_const LANCES_ROOM,                   13, 13 ; $71

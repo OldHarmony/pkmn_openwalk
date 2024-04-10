@@ -4,7 +4,7 @@ UndergroundPathViridianCity_Object:
 	def_warp_events
 	warp_event  3,  7, VIRIDIAN_CITY, 6
 	warp_event  4,  7, VIRIDIAN_CITY, 6
-	warp_event  4,  4, UNDERGROUND_PATH_PALLETTOWN_VIRIDIANCITY, 2
+	warp_event  4,  4, UNDERGROUND_PATH_PALLETTOWN_VIRIDIANCITY, 1
 
 	def_bg_events
 
