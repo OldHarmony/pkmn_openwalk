@@ -21,7 +21,7 @@ PalletTownScript0:
 	CheckEvent EVENT_FOLLOWED_OAK_INTO_LAB
 	ret nz
 	ld a, [wYCoord]
-	cp 0 ; is player near north exit?
+	cp 1 ; is player near north exit?
 	ret nz
 	xor a
 	ldh [hJoyHeld], a
@@ -62,7 +62,7 @@ PalletTownScript1:
 PalletTownScript2:
 	ld a, 1
 	ldh [hSpriteIndex], a
-	ld a, SPRITE_FACING_UP
+	ld a, SPRITE_FACING_RIGHT
 	ldh [hSpriteFacingDirection], a
 	call SetSpriteFacingDirectionAndDelay
 	call Delay3
