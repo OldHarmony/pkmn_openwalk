@@ -11,7 +11,7 @@
       // "program": "${workspaceFolder}/${command:AskForProgramName}",
       "program": "${workspaceFolder}/pokeblue_debug.gbc",
       "port": 58870,
-      "stopOnEntry": true,
+      "stopOnEntry": false,
       "preLaunchTask": "Build"
     },
     {
