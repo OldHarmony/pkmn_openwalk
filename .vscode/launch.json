@@ -11,7 +11,8 @@
       // "program": "${workspaceFolder}/${command:AskForProgramName}",
       "program": "${workspaceFolder}/pokeblue_debug.gbc",
       "port": 58870,
-      "stopOnEntry": true
+      "stopOnEntry": true,
+      "preLaunchTask": "Build"
     },
     {
       "type": "emulicious-debugger",
@@ -20,7 +21,8 @@
       // "program": "${workspaceFolder}/${command:AskForProgramName}",
       "program": "${workspaceFolder}/pokeblue__hc007_bga_v2.gbc",
       "port": 58870,
-      "stopOnEntry": true
+      "stopOnEntry": true,
+      "preLaunchTask": "Build && Decompile && create Patch"
     }
   ]
 }
