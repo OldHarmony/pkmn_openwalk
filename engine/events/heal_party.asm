@@ -1,5 +1,8 @@
 HealParty:
 ; Restore HP and PP.
+	ld a, [wPartyCount]
+	cp $00
+	jp z, .EndofHealParty
 
 	ld hl, wPartySpecies
 	ld de, wPartyMon1HP
@@ -96,4 +99,5 @@ HealParty:
 	inc [hl]
 	dec b
 	jr nz, .ppup
+.EndofHealParty
 	ret

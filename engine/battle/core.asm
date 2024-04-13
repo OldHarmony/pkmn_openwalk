@@ -1460,6 +1460,8 @@ TrainerSentOutText:
 ; sets d = 0 if all fainted, d != 0 if some mons are still alive
 AnyPartyAlive::
 	ld a, [wPartyCount]
+	cp $00
+	jp z, .EndOfPartyAliveCheck
 	ld e, a
 	xor a
 	ld hl, wPartyMon1HP
@@ -1471,6 +1473,7 @@ AnyPartyAlive::
 	add hl, bc
 	dec e
 	jr nz, .partyMonsLoop
+.EndOfPartyAliveCheck
 	ld d, a
 	ret
 
