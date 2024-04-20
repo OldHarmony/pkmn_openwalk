@@ -1,17 +1,21 @@
+	object_const_def
+	const_export CELADONMARTROOF_SUPER_NERD
+	const_export CELADONMARTROOF_LITTLE_GIRL
+
 CeladonMartRoof_Object:
 	db $42 ; border block
 
-	def_warps
-	warp 15,  2, 0, CELADON_MART_5F
+	def_warp_events
+	warp_event 15,  2, CELADON_MART_5F, 1
 
-	def_signs
-	sign 10,  1, 3 ; CeladonMartRoofText3
-	sign 11,  1, 4 ; CeladonMartRoofText4
-	sign 12,  2, 5 ; CeladonMartRoofText5
-	sign 13,  2, 6 ; CeladonMartRoofText6
+	def_bg_events
+	bg_event 10,  1, TEXT_CELADONMARTROOF_VENDING_MACHINE1
+	bg_event 11,  1, TEXT_CELADONMARTROOF_VENDING_MACHINE2
+	bg_event 12,  2, TEXT_CELADONMARTROOF_VENDING_MACHINE3
+	bg_event 13,  2, TEXT_CELADONMARTROOF_CURRENT_FLOOR_SIGN
 
-	def_objects
-	object SPRITE_SUPER_NERD, 10, 4, STAY, LEFT, 1 ; person
-	object SPRITE_LITTLE_GIRL, 5, 5, WALK, ANY_DIR, 2 ; person
+	def_object_events
+	object_event 10,  4, SPRITE_SUPER_NERD, STAY, LEFT, TEXT_CELADONMARTROOF_SUPER_NERD
+	object_event  5,  5, SPRITE_LITTLE_GIRL, WALK, ANY_DIR, TEXT_CELADONMARTROOF_LITTLE_GIRL
 
 	def_warps_to CELADON_MART_ROOF

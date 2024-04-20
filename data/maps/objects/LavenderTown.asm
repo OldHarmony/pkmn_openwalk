@@ -1,25 +1,30 @@
+	object_const_def
+	const_export LAVENDERTOWN_LITTLE_GIRL
+	const_export LAVENDERTOWN_COOLTRAINER_M
+	const_export LAVENDERTOWN_SUPER_NERD
+
 LavenderTown_Object:
 	db $2c ; border block
 
-	def_warps
-	warp  3,  5, 0, LAVENDER_POKECENTER
-	warp 14,  5, 0, POKEMON_TOWER_1F
-	warp  7,  9, 0, MR_FUJIS_HOUSE
-	warp 15, 13, 0, LAVENDER_MART
-	warp  3, 13, 0, LAVENDER_CUBONE_HOUSE
-	warp  7, 13, 0, NAME_RATERS_HOUSE
+	def_warp_events
+	warp_event  3,  5, LAVENDER_POKECENTER, 1
+	warp_event 14,  5, POKEMON_TOWER_1F, 1
+	warp_event  7,  9, MR_FUJIS_HOUSE, 1
+	warp_event 15, 13, LAVENDER_MART, 1
+	warp_event  3, 13, LAVENDER_CUBONE_HOUSE, 1
+	warp_event  7, 13, NAME_RATERS_HOUSE, 1
 
-	def_signs
-	sign 11,  9, 4 ; LavenderTownText4
-	sign  9,  3, 5 ; LavenderTownText5
-	sign 16, 13, 6 ; MartSignText
-	sign  4,  5, 7 ; PokeCenterSignText
-	sign  5,  9, 8 ; LavenderTownText8
-	sign 17,  7, 9 ; LavenderTownText9
+	def_bg_events
+	bg_event 11,  9, TEXT_LAVENDERTOWN_SIGN
+	bg_event  9,  3, TEXT_LAVENDERTOWN_SILPH_SCOPE_SIGN
+	bg_event 16, 13, TEXT_LAVENDERTOWN_MART_SIGN
+	bg_event  4,  5, TEXT_LAVENDERTOWN_POKECENTER_SIGN
+	bg_event  5,  9, TEXT_LAVENDERTOWN_POKEMON_HOUSE_SIGN
+	bg_event 17,  7, TEXT_LAVENDERTOWN_POKEMON_TOWER_SIGN
 
-	def_objects
-	object SPRITE_LITTLE_GIRL, 15, 9, WALK, ANY_DIR, 1 ; person
-	object SPRITE_COOLTRAINER_M, 9, 10, STAY, NONE, 2 ; person
-	object SPRITE_SUPER_NERD, 8, 7, WALK, LEFT_RIGHT, 3 ; person
+	def_object_events
+	object_event 15,  9, SPRITE_LITTLE_GIRL, WALK, ANY_DIR, TEXT_LAVENDERTOWN_LITTLE_GIRL
+	object_event  9, 10, SPRITE_COOLTRAINER_M, STAY, NONE, TEXT_LAVENDERTOWN_COOLTRAINER_M
+	object_event  8,  7, SPRITE_SUPER_NERD, WALK, LEFT_RIGHT, TEXT_LAVENDERTOWN_SUPER_NERD
 
 	def_warps_to LAVENDER_TOWN

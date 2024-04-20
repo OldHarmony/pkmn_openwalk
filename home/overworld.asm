@@ -5,7 +5,7 @@ HandleMidJump::
 
 EnterMap::
 ; Load a new map.
-	ld a, $ff
+	ld a, A_BUTTON | B_BUTTON | SELECT | START | D_RIGHT | D_LEFT | D_UP | D_DOWN
 	ld [wJoyIgnore], a
 	call LoadMapData
 	farcall ClearVariablesOnEnterMap
@@ -72,14 +72,14 @@ OverworldLoopLessDelay::
 .notSimulating
 	ldh a, [hJoyPressed]
 .checkIfStartIsPressed
-	bit 3, a ; start button
+	bit BIT_START, a
 	jr z, .startButtonNotPressed
 ; if START is pressed
 	xor a ; TEXT_START_MENU
 	ldh [hSpriteIndexOrTextID], a
 	jp .displayDialogue
 .startButtonNotPressed
-	bit 0, a ; A button
+	bit BIT_A_BUTTON, a
 	jp z, .checkIfDownButtonIsPressed
 ; if A is pressed
 	ld a, [wd730]
@@ -104,7 +104,7 @@ OverworldLoopLessDelay::
 	bit 0, a
 	jr nz, .checkForOpponent
 	lda_coord 8, 9
-	ld [wTilePlayerStandingOn], a ; unused?
+	ld [wTilePlayerStandingOn], a ; checked when using Surf for forbidden tile pairs
 	call DisplayTextID ; display either the start menu or the NPC/sign text
 	ld a, [wEnteringCableClub]
 	and a
@@ -117,7 +117,7 @@ OverworldLoopLessDelay::
 	predef LoadSAV
 	ld a, [wCurMap]
 	ld [wDestinationMap], a
-	call SpecialWarpIn
+	call PrepareForSpecialWarp
 	ld a, [wCurMap]
 	call SwitchToMapRomBank ; switch to the ROM bank of the current map
 	ld hl, wCurMapTileset
@@ -146,7 +146,7 @@ OverworldLoopLessDelay::
 
 .checkIfDownButtonIsPressed
 	ldh a, [hJoyHeld] ; current joypad state
-	bit 7, a ; down button
+	bit BIT_D_DOWN, a
 	jr z, .checkIfUpButtonIsPressed
 	ld a, 1
 	ld [wSpritePlayerStateData1YStepVector], a
@@ -154,7 +154,7 @@ OverworldLoopLessDelay::
 	jr .handleDirectionButtonPress
 
 .checkIfUpButtonIsPressed
-	bit 6, a ; up button
+	bit BIT_D_UP, a
 	jr z, .checkIfLeftButtonIsPressed
 	ld a, -1
 	ld [wSpritePlayerStateData1YStepVector], a
@@ -162,7 +162,7 @@ OverworldLoopLessDelay::
 	jr .handleDirectionButtonPress
 
 .checkIfLeftButtonIsPressed
-	bit 5, a ; left button
+	bit BIT_D_LEFT, a
 	jr z, .checkIfRightButtonIsPressed
 	ld a, -1
 	ld [wSpritePlayerStateData1XStepVector], a
@@ -170,7 +170,7 @@ OverworldLoopLessDelay::
 	jr .handleDirectionButtonPress
 
 .checkIfRightButtonIsPressed
-	bit 4, a ; right button
+	bit BIT_D_RIGHT, a
 	jr z, .noDirectionButtonsPressed
 	ld a, 1
 	ld [wSpritePlayerStateData1XStepVector], a
@@ -550,7 +550,7 @@ CheckMapConnections::
 	ld a, [wXCoord]
 	cp $ff
 	jr nz, .checkEastMap
-	ld a, [wMapConn3Ptr]
+	ld a, [wWestConnectedMap]
 	ld [wCurMap], a
 	ld a, [wWestConnectedMapXAlignment] ; new X coordinate upon entering west map
 	ld [wXCoord], a
@@ -587,7 +587,7 @@ CheckMapConnections::
 	ld a, [wCurrentMapWidth2] ; map width
 	cp b
 	jr nz, .checkNorthMap
-	ld a, [wMapConn4Ptr]
+	ld a, [wEastConnectedMap]
 	ld [wCurMap], a
 	ld a, [wEastConnectedMapXAlignment] ; new X coordinate upon entering east map
 	ld [wXCoord], a
@@ -623,7 +623,7 @@ CheckMapConnections::
 	ld a, [wYCoord]
 	cp $ff
 	jr nz, .checkSouthMap
-	ld a, [wMapConn1Ptr]
+	ld a, [wNorthConnectedMap]
 	ld [wCurMap], a
 	ld a, [wNorthConnectedMapYAlignment] ; new Y coordinate upon entering north map
 	ld [wYCoord], a
@@ -651,7 +651,7 @@ CheckMapConnections::
 	ld a, [wCurrentMapHeight2]
 	cp b
 	jr nz, .didNotEnterConnectedMap
-	ld a, [wMapConn2Ptr]
+	ld a, [wSouthConnectedMap]
 	ld [wCurMap], a
 	ld a, [wSouthConnectedMapYAlignment] ; new Y coordinate upon entering south map
 	ld [wYCoord], a
@@ -762,11 +762,11 @@ HandleBlackOut::
 	call StopMusic
 	ld hl, wd72e
 	res 5, [hl]
-	ld a, BANK(ResetStatusAndHalveMoneyOnBlackout) ; also BANK(SpecialWarpIn) and BANK(SpecialEnterMap)
+	ld a, BANK(ResetStatusAndHalveMoneyOnBlackout) ; also BANK(PrepareForSpecialWarp) and BANK(SpecialEnterMap)
 	ldh [hLoadedROMBank], a
 	ld [MBC1RomBank], a
 	call ResetStatusAndHalveMoneyOnBlackout
-	call SpecialWarpIn
+	call PrepareForSpecialWarp
 	call PlayDefaultMusicFadeOutCurrent
 	jp SpecialEnterMap
 
@@ -793,10 +793,10 @@ HandleFlyWarpOrDungeonWarp::
 	set 2, [hl] ; fly warp or dungeon warp
 	res 5, [hl] ; forced to ride bike
 	call LeaveMapAnim
-	ld a, BANK(SpecialWarpIn)
+	ld a, BANK(PrepareForSpecialWarp)
 	ldh [hLoadedROMBank], a
 	ld [MBC1RomBank], a
-	call SpecialWarpIn
+	call PrepareForSpecialWarp
 	jp SpecialEnterMap
 
 LeaveMapAnim::
@@ -910,9 +910,9 @@ LoadTileBlockMap::
 	add hl, bc
 	ld c, MAP_BORDER
 	add hl, bc ; this puts us past the (west) border
-	ld a, [wMapDataPtr] ; tile map pointer
+	ld a, [wCurMapDataPtr] ; tile map pointer
 	ld e, a
-	ld a, [wMapDataPtr + 1]
+	ld a, [wCurMapDataPtr + 1]
 	ld d, a ; de = tile map pointer
 	ld a, [wCurMapHeight]
 	ld b, a
@@ -937,7 +937,7 @@ LoadTileBlockMap::
 	dec b
 	jr nz, .rowLoop
 .northConnection
-	ld a, [wMapConn1Ptr]
+	ld a, [wNorthConnectedMap]
 	cp $ff
 	jr z, .southConnection
 	call SwitchToMapRomBank
@@ -949,13 +949,13 @@ LoadTileBlockMap::
 	ld e, a
 	ld a, [wNorthConnectionStripDest + 1]
 	ld d, a
-	ld a, [wNorthConnectionStripWidth]
+	ld a, [wNorthConnectionStripLength]
 	ldh [hNorthSouthConnectionStripWidth], a
 	ld a, [wNorthConnectedMapWidth]
 	ldh [hNorthSouthConnectedMapWidth], a
 	call LoadNorthSouthConnectionsTileMap
 .southConnection
-	ld a, [wMapConn2Ptr]
+	ld a, [wSouthConnectedMap]
 	cp $ff
 	jr z, .westConnection
 	call SwitchToMapRomBank
@@ -967,13 +967,13 @@ LoadTileBlockMap::
 	ld e, a
 	ld a, [wSouthConnectionStripDest + 1]
 	ld d, a
-	ld a, [wSouthConnectionStripWidth]
+	ld a, [wSouthConnectionStripLength]
 	ldh [hNorthSouthConnectionStripWidth], a
 	ld a, [wSouthConnectedMapWidth]
 	ldh [hNorthSouthConnectedMapWidth], a
 	call LoadNorthSouthConnectionsTileMap
 .westConnection
-	ld a, [wMapConn3Ptr]
+	ld a, [wWestConnectedMap]
 	cp $ff
 	jr z, .eastConnection
 	call SwitchToMapRomBank
@@ -985,13 +985,13 @@ LoadTileBlockMap::
 	ld e, a
 	ld a, [wWestConnectionStripDest + 1]
 	ld d, a
-	ld a, [wWestConnectionStripHeight]
+	ld a, [wWestConnectionStripLength]
 	ld b, a
 	ld a, [wWestConnectedMapWidth]
 	ldh [hEastWestConnectedMapWidth], a
 	call LoadEastWestConnectionsTileMap
 .eastConnection
-	ld a, [wMapConn4Ptr]
+	ld a, [wEastConnectedMap]
 	cp $ff
 	jr z, .done
 	call SwitchToMapRomBank
@@ -1003,7 +1003,7 @@ LoadTileBlockMap::
 	ld e, a
 	ld a, [wEastConnectionStripDest + 1]
 	ld d, a
-	ld a, [wEastConnectionStripHeight]
+	ld a, [wEastConnectionStripLength]
 	ld b, a
 	ld a, [wEastConnectedMapWidth]
 	ldh [hEastWestConnectedMapWidth], a
@@ -1244,7 +1244,7 @@ CollisionCheckOnLand::
 	call CheckTilePassable
 	jr nc, .noCollision
 .collision
-	ld a, [wChannelSoundIDs + Ch5]
+	ld a, [wChannelSoundIDs + CHAN5]
 	cp SFX_COLLISION ; check if collision sound is already playing
 	jr z, .setCarry
 	ld a, SFX_COLLISION
@@ -1869,7 +1869,7 @@ JoypadOverworld::
 ; if done simulating button presses
 .doneSimulating
 	xor a
-	ld [wWastedByteCD3A], a
+	ld [wUnusedCD3A], a
 	ld [wSimulatedJoypadStatesIndex], a
 	ld [wSimulatedJoypadStatesEnd], a
 	ld [wJoyIgnore], a
@@ -1925,7 +1925,7 @@ CollisionCheckOnWater::
 	jr z, .stopSurfing ; stop surfing if the tile is passable
 	jr .loop
 .collision
-	ld a, [wChannelSoundIDs + Ch5]
+	ld a, [wChannelSoundIDs + CHAN5]
 	cp SFX_COLLISION ; check if collision sound is already playing
 	jr z, .setCarry
 	ld a, SFX_COLLISION
@@ -1966,7 +1966,7 @@ RunMapScript::
 	call RunNPCMovementScript
 	ld a, [wCurMap] ; current map number
 	call SwitchToMapRomBank ; change to the ROM bank the map's data is in
-	ld hl, wMapScriptPtr
+	ld hl, wCurMapScriptPtr
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -2035,9 +2035,8 @@ LoadMapHeader::
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a ; hl = base of map header
-; copy the first 10 bytes (the fixed area) of the map data to D367-D370
-	ld de, wCurMapTileset
-	ld c, $0a
+	ld de, wCurMapHeader
+	ld c, wCurMapHeaderEnd - wCurMapHeader
 .copyFixedHeaderLoop
 	ld a, [hli]
 	ld [de], a
@@ -2046,32 +2045,32 @@ LoadMapHeader::
 	jr nz, .copyFixedHeaderLoop
 ; initialize all the connected maps to disabled at first, before loading the actual values
 	ld a, $ff
-	ld [wMapConn1Ptr], a
-	ld [wMapConn2Ptr], a
-	ld [wMapConn3Ptr], a
-	ld [wMapConn4Ptr], a
+	ld [wNorthConnectedMap], a
+	ld [wSouthConnectedMap], a
+	ld [wWestConnectedMap], a
+	ld [wEastConnectedMap], a
 ; copy connection data (if any) to WRAM
-	ld a, [wMapConnections]
+	ld a, [wCurMapConnections]
 	ld b, a
 .checkNorth
-	bit 3, b
+	bit NORTH_F, b
 	jr z, .checkSouth
-	ld de, wMapConn1Ptr
+	ld de, wNorthConnectionHeader
 	call CopyMapConnectionHeader
 .checkSouth
-	bit 2, b
+	bit SOUTH_F, b
 	jr z, .checkWest
-	ld de, wMapConn2Ptr
+	ld de, wSouthConnectionHeader
 	call CopyMapConnectionHeader
 .checkWest
-	bit 1, b
+	bit WEST_F, b
 	jr z, .checkEast
-	ld de, wMapConn3Ptr
+	ld de, wWestConnectionHeader
 	call CopyMapConnectionHeader
 .checkEast
-	bit 0, b
+	bit EAST_F, b
 	jr z, .getObjectDataPointer
-	ld de, wMapConn4Ptr
+	ld de, wEastConnectionHeader
 	call CopyMapConnectionHeader
 .getObjectDataPointer
 	ld a, [hli]
@@ -2094,7 +2093,7 @@ LoadMapHeader::
 	ld c, a
 	ld de, wWarpEntries
 .warpLoop ; one warp per loop iteration
-	ld b, $04
+	ld b, 4
 .warpInnerLoop
 	ld a, [hli]
 	ld [de], a

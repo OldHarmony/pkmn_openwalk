@@ -35,7 +35,7 @@ _ChooseABoxText::
 	text_end
 
 _EvolvedText::
-	text_ram wcf4b
+	text_ram wStringBuffer
 	text " wurde"
 	done
 
@@ -48,7 +48,7 @@ _IntoText::
 
 _StoppedEvolvingText::
 	text "Hmm? @"
-	text_ram wcf4b
+	text_ram wStringBuffer
 	text "s"
 	line "Entwicklung ist"
 	cont "abgebrochen!"
@@ -56,7 +56,7 @@ _StoppedEvolvingText::
 
 _IsEvolvingText::
 	text "Hey! @"
-	text_ram wcf4b
+	text_ram wStringBuffer
 	text_start
 	line "entwickelt sich!"
 	done
@@ -99,7 +99,7 @@ _FireDefrostedText::
 _MonsStatsRoseText::
 	text "<USER>s"
 	line "@"
-	text_ram wcf4b
+	text_ram wStringBuffer
 	text "@"
 	text_end
 
@@ -114,7 +114,7 @@ _RoseText::
 _MonsStatsFellText::
 	text "<TARGET>s"
 	line "@"
-	text_ram wcf4b
+	text_ram wStringBuffer
 	text "@"
 	text_end
 
@@ -327,10 +327,10 @@ _DreamWasEatenText::
 	line "Traum gefressen!"
 	prompt
 
-_TradeCenterText1::
+_TradeCenterOpponentText::
 	text "!"
 	done
 
-_ColosseumText1::
+_ColosseumOpponentText::
 	text "!"
 	done

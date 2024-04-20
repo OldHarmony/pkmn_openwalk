@@ -1,15 +1,17 @@
-; copy text of fixed length NAME_LENGTH (like player name, rival name, mon names, ...)
-CopyFixedLengthText:
+CopyDebugName: ; unused
 	ld bc, NAME_LENGTH
 	jp CopyData
 
-SetDefaultNamesBeforeTitlescreen::
-	ld hl, NintenText
+PrepareTitleScreen::
+	; These debug names are already copied later in PrepareOakSpeech.
+	; Removing the unused copies below has no apparent impact.
+	; CopyDebugName can also be safely deleted afterwards.
+	ld hl, DebugNewGamePlayerName
 	ld de, wPlayerName
-	call CopyFixedLengthText
-	ld hl, SonyText
+	call CopyDebugName
+	ld hl, DebugNewGameRivalName
 	ld de, wRivalName
-	call CopyFixedLengthText
+	call CopyDebugName
 	xor a
 	ldh [hWY], a
 	ld [wLetterPrintingDelayFlags], a
@@ -40,10 +42,10 @@ DisplayTitleScreen:
 	ld bc, 5 tiles
 	ld a, BANK(NintendoCopyrightLogoGraphics)
 	call FarCopyData2
-	ld hl, GamefreakLogoGraphics
+	ld hl, GameFreakLogoGraphics
 	ld de, vTitleLogo2 tile (16 + 5)
 	ld bc, 10 tiles
-	ld a, BANK(GamefreakLogoGraphics)
+	ld a, BANK(GameFreakLogoGraphics)
 	call FarCopyData2
 	ld hl, PokemonLogoGraphics
 	ld de, vTitleLogo
@@ -93,7 +95,7 @@ DisplayTitleScreen:
 	call DrawPlayerCharacter
 
 ; put a pokeball in the player's hand
-	ld hl, wOAMBuffer + $28
+	ld hl, wShadowOAMSprite10
 	ld a, $74
 	ld [hl], a
 
@@ -323,7 +325,7 @@ DrawPlayerCharacter:
 	call ClearSprites
 	xor a
 	ld [wPlayerCharacterOAMTile], a
-	ld hl, wOAMBuffer
+	ld hl, wShadowOAM
 	lb de, $60, $5a
 	ld b, 7
 .loop
@@ -377,7 +379,7 @@ LoadCopyrightAndTextBoxTiles:
 LoadCopyrightTiles:
 	ld de, NintendoCopyrightLogoGraphics
 	ld hl, vChars2 tile $60
-	lb bc, BANK(NintendoCopyrightLogoGraphics), (GamefreakLogoGraphicsEnd - NintendoCopyrightLogoGraphics) / $0f
+	lb bc, BANK(NintendoCopyrightLogoGraphics), (GameFreakLogoGraphicsEnd - NintendoCopyrightLogoGraphics) / $0f
 	call CopyVideoData
 	hlcoord 2, 7
 	ld de, CopyrightTextString
@@ -401,5 +403,8 @@ PrintGameVersionOnTitleScreen:
 VersionOnTitleScreenText:
 	db $60,$61,$62,$63,$64,$65,$66,$67,$68,$69,"@" ; "Version Rote" or "Version Blau"
 
-NintenText: db "NINTEN@"
-SonyText:   db "SONY@"
+DebugNewGamePlayerName:
+	db "NINTEN@"
+
+DebugNewGameRivalName:
+	db "SONY@"

@@ -1,14 +1,18 @@
+	object_const_def
+	const_export ROUTE2TRADEHOUSE_SCIENTIST
+	const_export ROUTE2TRADEHOUSE_GAMEBOY_KID
+
 Route2TradeHouse_Object:
 	db $a ; border block
 
-	def_warps
-	warp  2,  7, 2, LAST_MAP
-	warp  3,  7, 2, LAST_MAP
+	def_warp_events
+	warp_event  2,  7, LAST_MAP, 3
+	warp_event  3,  7, LAST_MAP, 3
 
-	def_signs
+	def_bg_events
 
-	def_objects
-	object SPRITE_SCIENTIST, 2, 4, STAY, RIGHT, 1 ; person
-	object SPRITE_GAMEBOY_KID, 4, 1, STAY, DOWN, 2 ; person
+	def_object_events
+	object_event  2,  4, SPRITE_SCIENTIST, STAY, RIGHT, TEXT_ROUTE2TRADEHOUSE_SCIENTIST
+	object_event  4,  1, SPRITE_GAMEBOY_KID, STAY, DOWN, TEXT_ROUTE2TRADEHOUSE_GAMEBOY_KID
 
 	def_warps_to ROUTE_2_TRADE_HOUSE

@@ -1,3 +1,4 @@
+; see also FieldMoveDisplayData
 FieldMoveNames:
 	db "ZERSCHNEIDER@"
 	db "FLIEGEN@"

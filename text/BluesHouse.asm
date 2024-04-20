@@ -1,10 +1,10 @@
-_DaisyInitialText::
+_BluesHouseDaisyRivalAtLabText::
 	text "Hallo <PLAYER>!"
 	line "<RIVAL> wartet"
 	cont "in Opas Labor."
 	done
 
-_DaisyOfferMapText::
+_BluesHouseDaisyOfferMapText::
 	text "Opa hat Dich um"
 	line "einen Botengang"
 	cont "gebeten? Hier,"
@@ -15,17 +15,17 @@ _DaisyOfferMapText::
 _GotMapText::
 	text "<PLAYER> erhält"
 	line "eine @"
-	text_ram wcf4b
+	text_ram wStringBuffer
 	text "!@"
 	text_end
 
-_DaisyBagFullText::
+_BluesHouseDaisyBagFullText::
 	text "Du trägst zu"
 	line "viele Dinge mit"
 	cont "Dir herum!"
 	done
 
-_DaisyUseMapText::
+_BluesHouseDaisyUseMapText::
 	text "Benutze die"
 	line "KARTE, um Deinen"
 	cont "Standort zu"

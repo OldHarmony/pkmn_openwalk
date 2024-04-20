@@ -99,7 +99,7 @@ _SentToBoxText::
 	text " wurde"
 	cont "mittels PC in"
 	cont "#MON-BOX @"
-	text_ram wcf4b
+	text_ram wStringBuffer
 	text_start
 	cont "transferiert!"
 	done

@@ -1,10 +1,11 @@
-overworld_sprite: MACRO
+MACRO overworld_sprite
 	dw \1
 	db \2 tiles
 	db BANK(\1)
 ENDM
 
 SpriteSheetPointerTable:
+	table_width 4, SpriteSheetPointerTable
 	; graphics, tile count
 	overworld_sprite RedSprite, 12              ; SPRITE_RED
 	overworld_sprite BlueSprite, 12             ; SPRITE_BLUE
@@ -32,7 +33,7 @@ SpriteSheetPointerTable:
 	overworld_sprite RocketSprite, 12           ; SPRITE_ROCKET
 	overworld_sprite ChannelerSprite, 12        ; SPRITE_CHANNELER
 	overworld_sprite WaiterSprite, 12           ; SPRITE_WAITER
-	overworld_sprite ErikaSprite, 12            ; SPRITE_ERIKA
+	overworld_sprite SilphWorkerFSprite, 12     ; SPRITE_SILPH_WORKER_F
 	overworld_sprite MiddleAgedWomanSprite, 12  ; SPRITE_MIDDLE_AGED_WOMAN
 	overworld_sprite BrunetteGirlSprite, 12     ; SPRITE_BRUNETTE_GIRL
 	overworld_sprite LanceSprite, 12            ; SPRITE_LANCE
@@ -49,7 +50,7 @@ SpriteSheetPointerTable:
 	overworld_sprite NurseSprite, 12            ; SPRITE_NURSE
 	overworld_sprite LinkReceptionistSprite, 12 ; SPRITE_LINK_RECEPTIONIST
 	overworld_sprite SilphPresidentSprite, 12   ; SPRITE_SILPH_PRESIDENT
-	overworld_sprite SilphWorkerSprite, 12      ; SPRITE_SILPH_WORKER
+	overworld_sprite SilphWorkerMSprite, 12     ; SPRITE_SILPH_WORKER_M
 	overworld_sprite WardenSprite, 12           ; SPRITE_WARDEN
 	overworld_sprite CaptainSprite, 12          ; SPRITE_CAPTAIN
 	overworld_sprite FisherSprite, 12           ; SPRITE_FISHER
@@ -78,3 +79,4 @@ SpriteSheetPointerTable:
 	overworld_sprite GamblerAsleepSprite, 4     ; SPRITE_UNUSED_GAMBLER_ASLEEP_1
 	overworld_sprite GamblerAsleepSprite, 4     ; SPRITE_UNUSED_GAMBLER_ASLEEP_2
 	overworld_sprite GamblerAsleepSprite, 4     ; SPRITE_GAMBLER_ASLEEP
+	assert_table_length NUM_SPRITES

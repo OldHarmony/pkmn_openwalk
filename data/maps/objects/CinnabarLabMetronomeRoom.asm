@@ -1,17 +1,21 @@
+	object_const_def
+	const_export CINNABARLABMETRONOMEROOM_SCIENTIST1
+	const_export CINNABARLABMETRONOMEROOM_SCIENTIST2
+
 CinnabarLabMetronomeRoom_Object:
 	db $17 ; border block
 
-	def_warps
-	warp  2,  7, 3, CINNABAR_LAB
-	warp  3,  7, 3, CINNABAR_LAB
+	def_warp_events
+	warp_event  2,  7, CINNABAR_LAB, 4
+	warp_event  3,  7, CINNABAR_LAB, 4
 
-	def_signs
-	sign  0,  4, 3 ; Lab3Text3
-	sign  1,  4, 4 ; Lab3Text4
-	sign  2,  1, 5 ; Lab3Text5
+	def_bg_events
+	bg_event  0,  4, TEXT_CINNABARLABMETRONOMEROOM_PC_KEYBOARD
+	bg_event  1,  4, TEXT_CINNABARLABMETRONOMEROOM_PC_MONITOR
+	bg_event  2,  1, TEXT_CINNABARLABMETRONOMEROOM_AMBER_PIPE
 
-	def_objects
-	object SPRITE_SCIENTIST, 7, 2, STAY, DOWN, 1 ; person
-	object SPRITE_SCIENTIST, 2, 3, WALK, LEFT_RIGHT, 2 ; person
+	def_object_events
+	object_event  7,  2, SPRITE_SCIENTIST, STAY, DOWN, TEXT_CINNABARLABMETRONOMEROOM_SCIENTIST1
+	object_event  2,  3, SPRITE_SCIENTIST, WALK, LEFT_RIGHT, TEXT_CINNABARLABMETRONOMEROOM_SCIENTIST2
 
 	def_warps_to CINNABAR_LAB_METRONOME_ROOM

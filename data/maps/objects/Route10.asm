@@ -1,24 +1,32 @@
+	object_const_def
+	const_export ROUTE10_SUPER_NERD1
+	const_export ROUTE10_HIKER1
+	const_export ROUTE10_SUPER_NERD2
+	const_export ROUTE10_COOLTRAINER_F1
+	const_export ROUTE10_HIKER2
+	const_export ROUTE10_COOLTRAINER_F2
+
 Route10_Object:
 	db $2c ; border block
 
-	def_warps
-	warp 11, 19, 0, ROCK_TUNNEL_POKECENTER
-	warp  8, 17, 0, ROCK_TUNNEL_1F
-	warp  8, 53, 2, ROCK_TUNNEL_1F
-	warp  6, 39, 0, POWER_PLANT
+	def_warp_events
+	warp_event 11, 19, ROCK_TUNNEL_POKECENTER, 1
+	warp_event  8, 17, ROCK_TUNNEL_1F, 1
+	warp_event  8, 53, ROCK_TUNNEL_1F, 3
+	warp_event  6, 39, POWER_PLANT, 1
 
-	def_signs
-	sign  7, 19, 7 ; Route10Text7
-	sign 12, 19, 8 ; PokeCenterSignText
-	sign  9, 55, 9 ; Route10Text9
-	sign  5, 41, 10 ; Route10Text10
+	def_bg_events
+	bg_event  7, 19, TEXT_ROUTE10_ROCKTUNNEL_NORTH_SIGN
+	bg_event 12, 19, TEXT_ROUTE10_POKECENTER_SIGN
+	bg_event  9, 55, TEXT_ROUTE10_ROCKTUNNEL_SOUTH_SIGN
+	bg_event  5, 41, TEXT_ROUTE10_POWERPLANT_SIGN
 
-	def_objects
-	object SPRITE_SUPER_NERD, 10, 44, STAY, LEFT, 1, OPP_POKEMANIAC, 1
-	object SPRITE_HIKER, 3, 57, STAY, UP, 2, OPP_HIKER, 7
-	object SPRITE_SUPER_NERD, 14, 64, STAY, LEFT, 3, OPP_POKEMANIAC, 2
-	object SPRITE_COOLTRAINER_F, 7, 25, STAY, LEFT, 4, OPP_JR_TRAINER_F, 7
-	object SPRITE_HIKER, 3, 61, STAY, DOWN, 5, OPP_HIKER, 8
-	object SPRITE_COOLTRAINER_F, 7, 54, STAY, DOWN, 6, OPP_JR_TRAINER_F, 8
+	def_object_events
+	object_event 10, 44, SPRITE_SUPER_NERD, STAY, LEFT, TEXT_ROUTE10_SUPER_NERD1, OPP_POKEMANIAC, 1
+	object_event  3, 57, SPRITE_HIKER, STAY, UP, TEXT_ROUTE10_HIKER1, OPP_HIKER, 7
+	object_event 14, 64, SPRITE_SUPER_NERD, STAY, LEFT, TEXT_ROUTE10_SUPER_NERD2, OPP_POKEMANIAC, 2
+	object_event  7, 25, SPRITE_COOLTRAINER_F, STAY, LEFT, TEXT_ROUTE10_COOLTRAINER_F1, OPP_JR_TRAINER_F, 7
+	object_event  3, 61, SPRITE_HIKER, STAY, DOWN, TEXT_ROUTE10_HIKER2, OPP_HIKER, 8
+	object_event  7, 54, SPRITE_COOLTRAINER_F, STAY, DOWN, TEXT_ROUTE10_COOLTRAINER_F2, OPP_JR_TRAINER_F, 8
 
 	def_warps_to ROUTE_10

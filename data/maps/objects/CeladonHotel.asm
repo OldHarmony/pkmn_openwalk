@@ -1,15 +1,20 @@
+	object_const_def
+	const_export CELADONHOTEL_GRANNY
+	const_export CELADONHOTEL_BEAUTY
+	const_export CELADONHOTEL_SUPER_NERD
+
 CeladonHotel_Object:
 	db $0 ; border block
 
-	def_warps
-	warp  3,  7, 12, LAST_MAP
-	warp  4,  7, 12, LAST_MAP
+	def_warp_events
+	warp_event  3,  7, LAST_MAP, 13
+	warp_event  4,  7, LAST_MAP, 13
 
-	def_signs
+	def_bg_events
 
-	def_objects
-	object SPRITE_GRANNY, 3, 1, STAY, DOWN, 1 ; person
-	object SPRITE_BEAUTY, 2, 4, STAY, NONE, 2 ; person
-	object SPRITE_SUPER_NERD, 8, 4, WALK, LEFT_RIGHT, 3 ; person
+	def_object_events
+	object_event  3,  1, SPRITE_GRANNY, STAY, DOWN, TEXT_CELADONHOTEL_GRANNY
+	object_event  2,  4, SPRITE_BEAUTY, STAY, NONE, TEXT_CELADONHOTEL_BEAUTY
+	object_event  8,  4, SPRITE_SUPER_NERD, WALK, LEFT_RIGHT, TEXT_CELADONHOTEL_SUPER_NERD
 
 	def_warps_to CELADON_HOTEL

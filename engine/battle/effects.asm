@@ -98,10 +98,10 @@ PoisonEffect:
 	jr z, .noEffect
 	ld a, [de]
 	cp POISON_SIDE_EFFECT1
-	ld b, $34 ; ~20% chance of poisoning
+	ld b, 20 percent + 1 ; chance of poisoning
 	jr z, .sideEffectTest
 	cp POISON_SIDE_EFFECT2
-	ld b, $67 ; ~40% chance of poisoning
+	ld b, 40 percent + 1 ; chance of poisoning
 	jr z, .sideEffectTest
 	push hl
 	push de
@@ -118,17 +118,17 @@ PoisonEffect:
 	ret nc
 .inflictPoison
 	dec hl
-	set 3, [hl] ; mon is now poisoned
+	set PSN, [hl]
 	push de
 	dec de
 	ldh a, [hWhoseTurn]
 	and a
-	ld b, ANIM_C7
+	ld b, SHAKE_SCREEN_ANIM
 	ld hl, wPlayerBattleStatus3
 	ld a, [de]
 	ld de, wPlayerToxicCounter
 	jr nz, .ok
-	ld b, ANIM_A9
+	ld b, ENEMY_HUD_SHAKE_ANIM
 	ld hl, wEnemyBattleStatus3
 	ld de, wEnemyToxicCounter
 .ok
@@ -232,14 +232,14 @@ FreezeBurnParalyzeEffect:
 	ld a, 1 << PAR
 	ld [wEnemyMonStatus], a
 	call QuarterSpeedDueToParalysis ; quarter speed of affected mon
-	ld a, ANIM_A9
+	ld a, ENEMY_HUD_SHAKE_ANIM
 	call PlayBattleAnimation
 	jp PrintMayNotAttackText ; print paralysis text
 .burn1
 	ld a, 1 << BRN
 	ld [wEnemyMonStatus], a
 	call HalveAttackDueToBurn ; halve attack of affected mon
-	ld a, ANIM_A9
+	ld a, ENEMY_HUD_SHAKE_ANIM
 	call PlayBattleAnimation
 	ld hl, BurnedText
 	jp PrintText
@@ -247,7 +247,7 @@ FreezeBurnParalyzeEffect:
 	call ClearHyperBeam ; resets hyper beam (recharge) condition from target
 	ld a, 1 << FRZ
 	ld [wEnemyMonStatus], a
-	ld a, ANIM_A9
+	ld a, ENEMY_HUD_SHAKE_ANIM
 	call PlayBattleAnimation
 	ld hl, FrozenText
 	jp PrintText
@@ -548,7 +548,7 @@ StatModifierDownEffect:
 	cp LINK_STATE_BATTLING
 	jr z, .statModifierDownEffect
 	call BattleRandom
-	cp $40 ; 1/4 chance to miss by in regular battle
+	cp 25 percent + 1 ; chance to miss by in regular battle
 	jp c, MoveMissed
 .statModifierDownEffect
 	call CheckTargetSubstitute ; can't hit through substitute
@@ -557,7 +557,7 @@ StatModifierDownEffect:
 	cp ATTACK_DOWN_SIDE_EFFECT
 	jr c, .nonSideEffect
 	call BattleRandom
-	cp $55 ; 85/256 chance for side effects
+	cp 33 percent + 1 ; chance for side effects
 	jp nc, CantLowerAnymore
 	ld a, [de]
 	sub ATTACK_DOWN_SIDE_EFFECT ; map each stat to 0-3
@@ -740,7 +740,7 @@ FellText:
 	text_end
 
 PrintStatText:
-	ld hl, StatsTextStrings
+	ld hl, StatModTextStrings
 	ld c, "@"
 .findStatName_outer
 	dec b
@@ -751,11 +751,11 @@ PrintStatText:
 	jr z, .findStatName_outer
 	jr .findStatName_inner
 .foundStatName
-	ld de, wcf4b
+	ld de, wStringBuffer
 	ld bc, $a
 	jp CopyData
 
-INCLUDE "data/battle/stat_names.asm"
+INCLUDE "data/battle/stat_mod_names.asm"
 
 INCLUDE "data/battle/stat_modifiers.asm"
 
@@ -802,7 +802,7 @@ ThrashPetalDanceEffect:
 	inc a
 	ld [de], a ; set thrash/petal dance counter to 2 or 3 at random
 	ldh a, [hWhoseTurn]
-	add ANIM_B0
+	add SHRINKING_SQUARE_ANIM
 	jp PlayBattleAnimation2
 
 SwitchAndTeleportEffect:
@@ -819,14 +819,14 @@ SwitchAndTeleportEffect:
 	jr nc, .playerMoveWasSuccessful ; if so, teleport will always succeed
 	add b
 	ld c, a
-	inc c ; c = sum of player level and enemy level
+	inc c ; c = playerLevel + enemyLevel + 1
 .rejectionSampleLoop1
 	call BattleRandom
 	cp c ; get a random number between 0 and c
 	jr nc, .rejectionSampleLoop1
 	srl b
 	srl b  ; b = enemyLevel / 4
-	cp b ; is rand[0, playerLevel + enemyLevel) >= (enemyLevel / 4)?
+	cp b ; is rand[0, playerLevel + enemyLevel] >= (enemyLevel / 4)?
 	jr nc, .playerMoveWasSuccessful ; if so, allow teleporting
 	ld c, 50
 	call DelayFrames
@@ -979,9 +979,9 @@ FlinchSideEffect:
 .flinchSideEffect
 	ld a, [de]
 	cp FLINCH_SIDE_EFFECT1
-	ld b, $1a ; ~10% chance of flinch
+	ld b, 10 percent + 1 ; chance of flinch (FLINCH_SIDE_EFFECT1)
 	jr z, .gotEffectChance
-	ld b, $4d ; ~30% chance of flinch
+	ld b, 30 percent + 1 ; chance of flinch otherwise
 .gotEffectChance
 	call BattleRandom
 	cp b
@@ -1002,7 +1002,7 @@ ChargeEffect:
 	jr z, .chargeEffect
 	ld hl, wEnemyBattleStatus1
 	ld de, wEnemyMoveEffect
-	ld b, ANIM_AF
+	ld b, XSTATITEM_DUPLICATE_ANIM
 .chargeEffect
 	set CHARGING_UP, [hl]
 	ld a, [de]
@@ -1016,7 +1016,7 @@ ChargeEffect:
 	cp DIG
 	jr nz, .notDigOrFly
 	set INVULNERABLE, [hl] ; mon is now invulnerable to typical attacks (fly/dig)
-	ld b, ANIM_C0
+	ld b, SLIDE_DOWN_ANIM
 .notDigOrFly
 	xor a
 	ld [wAnimationType], a
@@ -1111,7 +1111,7 @@ RecoilEffect:
 
 ConfusionSideEffect:
 	call BattleRandom
-	cp $19 ; ~10% chance
+	cp 10 percent ; chance of confusion
 	ret nc
 	jr ConfusionSideEffectSuccess
 
@@ -1460,9 +1460,9 @@ PlayBattleAnimation2:
 	ld [wAnimationID], a
 	ldh a, [hWhoseTurn]
 	and a
-	ld a, $6
+	ld a, ANIMATIONTYPE_SHAKE_SCREEN_HORIZONTALLY_SLOW_2
 	jr z, .storeAnimationType
-	ld a, $3
+	ld a, ANIMATIONTYPE_SHAKE_SCREEN_HORIZONTALLY_SLOW
 .storeAnimationType
 	ld [wAnimationType], a
 	jp PlayBattleAnimationGotID

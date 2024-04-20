@@ -1,18 +1,24 @@
+	object_const_def
+	const_export CELADONMART5F_GENTLEMAN
+	const_export CELADONMART5F_SAILOR
+	const_export CELADONMART5F_CLERK1
+	const_export CELADONMART5F_CLERK2
+
 CeladonMart5F_Object:
 	db $f ; border block
 
-	def_warps
-	warp 12,  1, 0, CELADON_MART_ROOF
-	warp 16,  1, 1, CELADON_MART_4F
-	warp  1,  1, 0, CELADON_MART_ELEVATOR
+	def_warp_events
+	warp_event 12,  1, CELADON_MART_ROOF, 1
+	warp_event 16,  1, CELADON_MART_4F, 2
+	warp_event  1,  1, CELADON_MART_ELEVATOR, 1
 
-	def_signs
-	sign 14,  1, 5 ; CeladonMart5Text5
+	def_bg_events
+	bg_event 14,  1, TEXT_CELADONMART5F_CURRENT_FLOOR_SIGN
 
-	def_objects
-	object SPRITE_GENTLEMAN, 14, 5, WALK, UP_DOWN, 1 ; person
-	object SPRITE_SAILOR, 2, 6, STAY, NONE, 2 ; person
-	object SPRITE_CLERK, 5, 3, STAY, DOWN, 3 ; person
-	object SPRITE_CLERK, 6, 3, STAY, DOWN, 4 ; person
+	def_object_events
+	object_event 14,  5, SPRITE_GENTLEMAN, WALK, UP_DOWN, TEXT_CELADONMART5F_GENTLEMAN
+	object_event  2,  6, SPRITE_SAILOR, STAY, NONE, TEXT_CELADONMART5F_SAILOR
+	object_event  5,  3, SPRITE_CLERK, STAY, DOWN, TEXT_CELADONMART5F_CLERK1
+	object_event  6,  3, SPRITE_CLERK, STAY, DOWN, TEXT_CELADONMART5F_CLERK2
 
 	def_warps_to CELADON_MART_5F

@@ -1,4 +1,4 @@
-_PewterGymText_5c4a3::
+_PewterGymBrockPostBattleAdviceText::
 	text "Es gibt die"
 	line "verschiedensten"
 	cont "Trainer auf der"
@@ -16,12 +16,12 @@ _PewterGymText_5c4a3::
 	cont "Können!"
 	done
 
-_TM34PreReceiveText::
+_PewterGymBrockWaitTakeThisText::
 	text "Warte! Nimm das"
 	line "hier mit!"
 	done
 
-_ReceivedTM34Text::
+_PewterGymReceivedTM34Text::
 	text "<PLAYER> erhält"
 	line "TM34!@"
 	text_end
@@ -54,13 +54,13 @@ _TM34ExplanationText::
 	cont "doppelter Kraft!"
 	done
 
-_TM34NoRoomText::
+_PewterGymTM34NoRoomText::
 	text "Du hast momentan"
 	line "keinen Platz für"
 	cont "weitere Items!"
 	done
 
-_PewterGymText_5c4bc::
+_PewterGymBrockReceivedBoulderBadgeText::
 	text "Ich habe"
 	line "Dich falsch"
 	cont "eingeschätzt!"
@@ -74,7 +74,7 @@ _PewterGymText_5c4bc::
 	line "den FELSORDEN!@"
 	text_end
 
-_PewterGymText_5c4c1::
+_PewterGymBrockBoulderBadgeInfoText::
 	text_start
 
 	para "Das ist ein"
@@ -92,7 +92,7 @@ _PewterGymText_5c4c1::
 	cont "einsetzen!"
 	prompt
 
-_PewterGymBattleText1::
+_PewterGymCooltrainerMBattleText::
 	text "Bleib stehen wo"
 	line "Du bist, Kleiner!"
 
@@ -102,7 +102,7 @@ _PewterGymBattleText1::
 	cont "antreten kannst!"
 	done
 
-_PewterGymEndBattleText1::
+_PewterGymCooltrainerMEndBattleText::
 	text "Mist!"
 
 	para "Lichtjahre messen"
@@ -110,13 +110,13 @@ _PewterGymEndBattleText1::
 	cont "nicht die Zeit!"
 	prompt
 
-_PewterGymAfterBattleText1::
+_PewterGymCooltrainerMAfterBattleText::
 	text "Du bist ganz gut,"
 	line "aber nicht so"
 	cont "gut wie ROCKO!"
 	done
 
-_PewterGymText_5c515::
+_PewterGymGuidePreAdviceText::
 	text "Hallo! Sieht aus,"
 	line "als hättest Du"
 	cont "das Zeug zu einem"
@@ -132,12 +132,12 @@ _PewterGymText_5c515::
 	cont "zeigen!"
 	done
 
-_PewterGymText_5c51a::
+_PewterGymGuideBeginAdviceText::
 	text "Alles klar! Dann"
 	line "kann es losgehen!"
 	prompt
 
-_PewterGymText_5c51f::
+_PewterGymGuideAdviceText::
 	text "Das #MON an"
 	line "der Spitze der"
 	cont "#MON-LISTE"
@@ -151,13 +151,13 @@ _PewterGymText_5c51f::
 	cont "leichter werden!"
 	done
 
-_PewterGymText_5c524::
+_PewterGymGuideFreeServiceText::
 	text "Der Tip ist"
 	line "kostenlos! Laß"
 	cont "uns anfangen!"
 	prompt
 
-_PewterGymText_5c529::
+_PewterGymGuidePostBattleText::
 	text "Ganz wie ich es"
 	line "mir gedacht habe! "
 	cont "Aus Dir kann ein"

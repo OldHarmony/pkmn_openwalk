@@ -1,4 +1,4 @@
-_CeladonGymText_48a5e::
+_CeladonGymErikaPreBattleText::
 	text "Ist das Wetter"
 	line "nicht wundervoll?"
 	cont "Einfach herrlich!"
@@ -27,7 +27,7 @@ _CeladonGymText_48a5e::
 	line "nicht verlieren!"
 	done
 
-_CeladonGymText_48a63::
+_CeladonGymErikaReceivedRainbowBadgeText::
 	text "Ich muß"
 	line "meine Niederlage"
 	cont "eingestehen!"
@@ -39,7 +39,7 @@ _CeladonGymText_48a63::
 	line "den FARBORDEN!"
 	prompt
 
-_CeladonGymText_48a68::
+_CeladonGymErikaPostBattleAdviceText::
 	text "Du katalogisierst"
 	line "#MON? Ich"
 	cont "bin beeindruckt!"
@@ -50,7 +50,7 @@ _CeladonGymText_48a68::
 	cont "interessieren!"
 	done
 
-_CeladonGymText9::
+_CeladonGymRainbowBadgeInfoText::
 	text "Der FARBORDEN"
 	line "läßt #MON bis"
 	cont "Level 50 Deinen"
@@ -66,10 +66,10 @@ _CeladonGymText9::
 	line "dieses Geschenk:"
 	done
 
-_ReceivedTM21Text::
+_CeladonGymReceivedTM21Text::
 	text "<PLAYER> erhält"
 	line "@"
-	text_ram wcf4b
+	text_ram wStringBuffer
 	text "!@"
 	text_end
 
@@ -86,7 +86,7 @@ _TM21ExplanationText::
 	cont "Gegner abzieht!"
 	done
 
-_TM21NoRoomText::
+_CeladonGymTM21NoRoomText::
 	text "Du solltest etwas"
 	line "Platz schaffen!"
 	done

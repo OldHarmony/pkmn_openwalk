@@ -1,11 +1,14 @@
+	object_const_def
+	const_export TRADECENTER_OPPONENT
+
 TradeCenter_Object:
 	db $e ; border block
 
-	def_warps
+	def_warp_events
 
-	def_signs
+	def_bg_events
 
-	def_objects
-	object SPRITE_RED, 2, 2, STAY, 0, 1 ; person
+	def_object_events
+	object_event  2,  2, SPRITE_RED, STAY, 0, TEXT_TRADECENTER_OPPONENT
 
 	def_warps_to TRADE_CENTER
