@@ -327,10 +327,10 @@ _DreamWasEatenText::
 	line "Traum gefressen!"
 	prompt
 
-_TradeCenterText1::
+_TradeCenterOpponentText::
 	text "!"
 	done
 
-_ColosseumText1::
+_ColosseumOpponentText::
 	text "!"
 	done

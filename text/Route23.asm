@@ -1,4 +1,4 @@
-_VictoryRoadGuardText1::
+_Route23YouDontHaveTheBadgeYetText::
 	text "Du darfst nur"
 	line "mit dem"
 	cont "@"
@@ -17,7 +17,7 @@ _VictoryRoadGuardText1::
 	cont "die PKMN-LIGA!@"
 	text_end
 
-_VictoryRoadGuardText2::
+_Route23OhThatIsTheBadgeText::
 	text "Du darfst nur"
 	line "passieren, wenn"
 	cont "Du bereits den"
@@ -33,14 +33,14 @@ _VictoryRoadGuardText2::
 	text "!@"
 	text_end
 
-_VictoryRoadGuardText_513a3::
+_Route23GoRightAheadText::
 	text_start
 
 	para "OK, setze"
 	line "Deinen Weg fort!"
 	done
 
-_Route23Text8::
+_Route23VictoryRoadGateSignText::
 	text "SIEGESSTRASSE"
 	line "- PKMN-LIGA"
 	done

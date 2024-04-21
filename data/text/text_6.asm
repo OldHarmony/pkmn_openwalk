@@ -192,11 +192,11 @@ _TeachMachineMoveText::
 	done
 
 _MonCannotLearnMachineMoveText::
-	text_ram wcd6d
+	text_ram wStringBuffer
 	text_start
 	line "paßt nicht zu"
 	cont "@"
-	text_ram wStringBuffer
+	text_ram wcd6d
 	text "."
 
 	para "Es kann"

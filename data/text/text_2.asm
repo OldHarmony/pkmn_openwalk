@@ -1741,8 +1741,6 @@ _MonWasReleasedText::
 	line "freigelassen. Leb"
 	cont "wohl, @"
 	text_ram wStringBuffer
-
-_CF50ExclamationText::
 	text "!"
 	prompt
 
