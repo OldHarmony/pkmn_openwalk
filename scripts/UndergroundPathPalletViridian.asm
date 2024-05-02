@@ -2,5 +2,14 @@ UndergroundPathPalletViridian_Script:
 	jp EnableAutoTextBoxDrawing
 
 UndergroundPathPalletViridian_TextPointers:
+	def_text_pointers
+	dw_const UndergroundPathPalletViridian_RocketGuyText1, TEXT_UNDERGROUNDPATHPALLETVIRIDIAN_ROCKETGUY
+;	dw_const UndergroundPathPalletViridian_RocketGuyText2, TEXT_UNDERGROUNDPATHPALLETVIRIDIAN_ROCKETGUY_2
 
-	text_end ; unused
+UndergroundPathPalletViridian_RocketGuyText1:
+	text_far _UndergroundPathPalletViridian_RocketGuyText1
+	text_end
+;
+;UndergroundPathPalletViridian_RocketGuyText2:
+;	text_far _UndergroundPathPalletViridian_RocketGuyText2
+;	text_end
