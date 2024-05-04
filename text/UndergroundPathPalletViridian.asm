@@ -7,7 +7,7 @@ _UndergroundPathPalletViridian_RocketGuyText1::
 _UndergroundPathPalletViridian_RocketGuyText2::
     text "Ich habe ja so"
 	line "kein Bock mehr,"
-	cont "auf das"
+	cont "auf das hier"
 	cont "...."
 	
 	para "Hey du!"
