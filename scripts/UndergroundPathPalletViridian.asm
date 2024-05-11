@@ -13,7 +13,7 @@ UndergroundPathPalletViridian_RocketGuyTextScript:
 	ld a, [wCurrentMenuItem]
 	and a
 	jr nz, .text_script_end
-	lb bc, MEW, 1
+	lb bc, MEW, 2
 	call GivePokemon
 	jr nc, .text_script_end
 	ld a, $00
