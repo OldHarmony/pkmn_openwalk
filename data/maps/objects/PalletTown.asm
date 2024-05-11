@@ -20,7 +20,7 @@ PalletTown_Object:
 
 	def_object_events
 	object_event  7,  4, SPRITE_OAK, STAY, RIGHT, TEXT_PALLETTOWN_OAK
-	object_event  3,  8, SPRITE_GIRL, WALK, ANY_DIR, TEXT_PALLETTOWN_GIRL
-	object_event  7, 12, SPRITE_FISHER, WALK, ANY_DIR, TEXT_PALLETTOWN_FISHER
+	object_event  2,  4, SPRITE_GIRL, WALK, ANY_DIR, TEXT_PALLETTOWN_GIRL
+	object_event  4, 11, SPRITE_FISHER, WALK, ANY_DIR, TEXT_PALLETTOWN_FISHER
 
 	def_warps_to PALLET_TOWN
