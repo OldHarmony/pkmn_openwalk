@@ -24,5 +24,5 @@ _UndergroundPathPalletViridian_RocketGuyText2::
 	para "Aber für 3000"
 	line "kannst du es"
 	cont "haben, auch was"
-	cont "immer das ist."
+	cont "immer das ist?"
 	done
