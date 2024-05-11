@@ -13,8 +13,13 @@ UndergroundPathPalletViridian_RocketGuyTextScript:
 	ld a, [wCurrentMenuItem]
 	and a
 	jr nz, .text_script_end
-	ld hl, .UndergroundPathPalletViridian_RocketGuyText1
-	call PrintText
+	lb bc, MEW, 1
+	call GivePokemon
+	jr nc, .text_script_end
+	ld a, $00
+	ld [wPlayerMoney], a
+	ld [wPlayerMoney + 1], a
+	ld [wPlayerMoney + 2], a
 .text_script_end
 	jp TextScriptEnd
 
