@@ -50,6 +50,10 @@ MainMenu:
 	ld de, NewGameText
 	call PlaceString
 .next2
+	coord hl, $00, $11
+	ld de, VersionText
+	call PlaceString
+
 	ld hl, wd730
 	res 6, [hl]
 	call UpdateSprites
@@ -720,3 +724,6 @@ CheckForPlayerNameInSRAM:
 	ld [MBC1SRamBankingMode], a
 	scf
 	ret
+
+VersionText:
+	db "Openwalk v0.1@"
