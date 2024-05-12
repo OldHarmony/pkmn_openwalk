@@ -2,9 +2,12 @@ ChoosePlayerName:
 	call OakSpeechSlidePicRight
 	ld de, DefaultNamesPlayer
 	call DisplayIntroNameTextBox
+IF DEF(_DEBUG)
+ELSE
 	ld a, [wCurrentMenuItem]
 	and a
 	jr z, .customName
+ENDC
 	ld hl, DefaultNamesPlayerList
 	call GetDefaultName
 	ld de, wPlayerName
@@ -35,9 +38,12 @@ ChooseRivalName:
 	call OakSpeechSlidePicRight
 	ld de, DefaultNamesRival
 	call DisplayIntroNameTextBox
+IF DEF(_DEBUG)
+ELSE
 	ld a, [wCurrentMenuItem]
 	and a
 	jr z, .customName
+ENDC
 	ld hl, DefaultNamesRivalList
 	call GetDefaultName
 	ld de, wRivalName
