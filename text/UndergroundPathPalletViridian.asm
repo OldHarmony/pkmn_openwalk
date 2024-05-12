@@ -20,9 +20,13 @@ _UndergroundPathPalletViridian_RocketGuyText2::
 	cont "#MON ist, auch"
 	cont "weil mein #DEX"
 	cont "keine Infos hat."
-	
-	para "Aber für 3000"
-	line "kannst du es"
-	cont "haben, auch was"
-	cont "immer das ist?"
+
+	para "Hey, wenn du es"
+	line "mir abkaufst,"
+	cont "kann ich hier"
+	cont "endlich weg!"
+	cont "Willst du es für"
+	cont "¥@"
+	text_bcd wPlayerMoney, 3 | LEADING_ZEROES | LEFT_ALIGN
+	text " haben?"
 	done
