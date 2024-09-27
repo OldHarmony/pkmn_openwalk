@@ -1,4 +1,4 @@
-_PewterGymText_5c49e::
+_PewterGymBrockPreBattleText::
 	text "Ich bin der"
 	line "ARENALEITER von"
 	cont "MARMORIA CITY,"

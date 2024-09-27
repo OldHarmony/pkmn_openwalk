@@ -1,14 +1,18 @@
+	object_const_def
+	const_export CINNABARLABFOSSILROOM_SCIENTIST1
+	const_export CINNABARLABFOSSILROOM_SCIENTIST2
+
 CinnabarLabFossilRoom_Object:
 	db $17 ; border block
 
-	def_warps
-	warp  2,  7, 4, CINNABAR_LAB
-	warp  3,  7, 4, CINNABAR_LAB
+	def_warp_events
+	warp_event  2,  7, CINNABAR_LAB, 5
+	warp_event  3,  7, CINNABAR_LAB, 5
 
-	def_signs
+	def_bg_events
 
-	def_objects
-	object SPRITE_SCIENTIST, 5, 2, WALK, LEFT_RIGHT, 1 ; person
-	object SPRITE_SCIENTIST, 7, 6, STAY, UP, 2 ; person
+	def_object_events
+	object_event  5,  2, SPRITE_SCIENTIST, WALK, LEFT_RIGHT, TEXT_CINNABARLABFOSSILROOM_SCIENTIST1
+	object_event  7,  6, SPRITE_SCIENTIST, STAY, UP, TEXT_CINNABARLABFOSSILROOM_SCIENTIST2
 
 	def_warps_to CINNABAR_LAB_FOSSIL_ROOM

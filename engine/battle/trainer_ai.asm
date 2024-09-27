@@ -264,7 +264,7 @@ ReadMove:
 	push bc
 	dec a
 	ld hl, Moves
-	ld bc, MoveEnd - Moves
+	ld bc, MOVE_LENGTH
 	call AddNTimes
 	ld de, wEnemyMoveNum
 	call CopyData
@@ -342,7 +342,10 @@ CooltrainerMAI:
 	jp AIUseXAttack
 
 CooltrainerFAI:
+	; The intended 25% chance to consider switching will not apply.
+	; Uncomment the line below to fix this.
 	cp 25 percent + 1
+	; ret nc
 	ld a, 10
 	call AICheckIfHPBelowFraction
 	jp c, AIUseHyperPotion
@@ -710,7 +713,7 @@ AIIncreaseStat:
 	ld a, [hl]
 	push af
 	push hl
-	ld a, ANIM_AF
+	ld a, XSTATITEM_DUPLICATE_ANIM
 	ld [hli], a
 	ld [hl], b
 	callfar StatModifierUpEffect

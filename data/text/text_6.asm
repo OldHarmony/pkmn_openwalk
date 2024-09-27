@@ -75,7 +75,7 @@ _VitaminStatRoseText::
 	text_ram wcd6d
 	text "s"
 	line "@"
-	text_ram wcf4b
+	text_ram wStringBuffer
 	text " ist"
 	cont "gestiegen."
 	prompt
@@ -152,7 +152,7 @@ _RestorePPWhichTechniqueText::
 _PPMaxedOutText::
 	text "Die AP von"
 	line "@"
-	text_ram wcf4b
+	text_ram wStringBuffer
 	text " sind"
 	cont "auf dem Maximum!"
 	prompt
@@ -160,7 +160,7 @@ _PPMaxedOutText::
 _PPIncreasedText::
 	text "Die AP von"
 	line "@"
-	text_ram wcf4b
+	text_ram wStringBuffer
 	text_start
 	cont "sind gestiegen."
 	prompt
@@ -181,18 +181,18 @@ _BootedUpHMText::
 _TeachMachineMoveText::
 	text "Sie enthält"
 	line "@"
-	text_ram wcf4b
+	text_ram wStringBuffer
 	text "!"
 
 	para "@"
-	text_ram wcf4b
+	text_ram wStringBuffer
 	text_start
 	line "einem #MON"
 	cont "beibringen?"
 	done
 
 _MonCannotLearnMachineMoveText::
-	text_ram wcf4b
+	text_ram wStringBuffer
 	text_start
 	line "paßt nicht zu"
 	cont "@"
@@ -201,7 +201,7 @@ _MonCannotLearnMachineMoveText::
 
 	para "Es kann"
 	line "@"
-	text_ram wcf4b
+	text_ram wStringBuffer
 	text_start
 	cont "nicht lernen."
 	prompt

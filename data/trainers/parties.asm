@@ -1,4 +1,5 @@
 TrainerDataPointers:
+	table_width 2, TrainerDataPointers
 	dw YoungsterData
 	dw BugCatcherData
 	dw LassData
@@ -46,6 +47,7 @@ TrainerDataPointers:
 	dw ChannelerData
 	dw AgathaData
 	dw LanceData
+	assert_table_length NUM_TRAINERS
 
 ; if first byte != $FF, then
 	; first byte is level (of all pokemon on this team)
@@ -269,7 +271,7 @@ BikerData:
 ; Route 17
 	; From https://www.smogon.com/smog/issue27/glitch:
 	; 0E:5FC2 is offset of the ending 0 for this first Biker on Route 17.
-	; BaseStats + (MonBaseStatsEnd - MonBaseStats) * (000 - 1) = $5FC2;
+	; BaseStats + (BASE_DATA_SIZE) * (000 - 1) = $5FC2;
 	; that's the formula from GetMonHeader for the base stats of mon #000.
 	; (BaseStats = $43DE and BANK(BaseStats) = $0E.)
 	; Finally, PokedexOrder lists 0 as the dex ID for every MissingNo.

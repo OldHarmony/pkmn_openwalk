@@ -1,4 +1,3 @@
-MapNames:
 PalletTownName:      db "ALABASTIA@"
 ViridianCityName:    db "VERTANIA CITY@"
 PewterCityName:      db "MARMORIA CITY@"

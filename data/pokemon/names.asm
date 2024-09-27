@@ -1,4 +1,5 @@
 MonsterNames::
+	table_width NAME_LENGTH - 1, MonsterNames
 	db "RIZEROS@@@"
 	db "KANGAMA@@@"
 	db "NIDORAN♂@@"
@@ -189,3 +190,4 @@ MonsterNames::
 	db "KNOFENSA@@"
 	db "ULTRIGARIA"
 	db "SARZENIA@@"
+	assert_table_length NUM_POKEMON_INDEXES

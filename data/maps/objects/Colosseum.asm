@@ -1,11 +1,14 @@
+	object_const_def
+	const_export COLOSSEUM_OPPONENT
+
 Colosseum_Object:
 	db $e ; border block
 
-	def_warps
+	def_warp_events
 
-	def_signs
+	def_bg_events
 
-	def_objects
-	object SPRITE_RED, 2, 2, STAY, 0, 1 ; person
+	def_object_events
+	object_event  2,  2, SPRITE_RED, STAY, ANY_DIR, TEXT_COLOSSEUM_OPPONENT
 
 	def_warps_to COLOSSEUM

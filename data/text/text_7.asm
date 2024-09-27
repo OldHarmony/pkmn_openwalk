@@ -3,7 +3,7 @@ _ItemUseText001::
 	text_end
 
 _ItemUseText002::
-	text_ram wcf4b
+	text_ram wStringBuffer
 	text " ein!"
 	done
 
@@ -13,7 +13,7 @@ _GotOnBicycleText1::
 
 _GotOnBicycleText2::
 	text "auf das @"
-	text_ram wcf4b
+	text_ram wStringBuffer
 	text "!"
 	prompt
 
@@ -23,7 +23,7 @@ _GotOffBicycleText1::
 
 _GotOffBicycleText2::
 	text "vom @"
-	text_ram wcf4b
+	text_ram wStringBuffer
 	text " ab."
 	prompt
 
@@ -36,7 +36,7 @@ _ThrewAwayItemText::
 _IsItOKToTossItemText::
 	text "Willst Du"
 	line "@"
-	text_ram wcf4b
+	text_ram wStringBuffer
 	text_start
 	cont "wegwerfen?"
 	prompt
@@ -52,7 +52,7 @@ _AlreadyKnowsText::
 	text_ram wcd6d
 	text " kennt"
 	line "@"
-	text_ram wcf4b
+	text_ram wStringBuffer
 	text_start
 	cont "bereits!"
 	prompt

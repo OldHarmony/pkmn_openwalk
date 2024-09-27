@@ -1,6 +1,6 @@
 PrepareOAMData::
 ; Determine OAM data for currently visible
-; sprites and write it to wOAMBuffer.
+; sprites and write it to wShadowOAM.
 
 	ld a, [wUpdateSpritesEnabled]
 	dec a
@@ -28,7 +28,7 @@ PrepareOAMData::
 	inc e
 	inc e
 	ld a, [de] ; [x#SPRITESTATEDATA1_IMAGEINDEX]
-	ld [wd5cd], a
+	ld [wSavedSpriteImageIndex], a
 	cp $ff ; off-screen (don't draw)
 	jr nz, .visible
 
@@ -79,7 +79,7 @@ PrepareOAMData::
 
 	ldh a, [hOAMBufferOffset]
 	ld e, a
-	ld d, HIGH(wOAMBuffer)
+	ld d, HIGH(wShadowOAM)
 
 .tileLoop
 	ldh a, [hSpriteScreenY]   ; temp for sprite Y position
@@ -98,7 +98,7 @@ PrepareOAMData::
 	push bc
 	ld b, a
 
-	ld a, [wd5cd]            ; temp copy of [x#SPRITESTATEDATA1_IMAGEINDEX]
+	ld a, [wSavedSpriteImageIndex]
 	swap a                   ; high nybble determines sprite used (0 is always player sprite, next are some npcs)
 	and $f
 
@@ -145,7 +145,7 @@ PrepareOAMData::
 	; Clear unused OAM.
 	ldh a, [hOAMBufferOffset]
 	ld l, a
-	ld h, HIGH(wOAMBuffer)
+	ld h, HIGH(wShadowOAM)
 	ld de, $4
 	ld b, $a0
 	ld a, [wd736]

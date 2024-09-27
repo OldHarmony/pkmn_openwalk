@@ -30,7 +30,7 @@ _PokemartBuyingGreetingText::
 	done
 
 _PokemartTellBuyPriceText::
-	text_ram wcf4b
+	text_ram wStringBuffer
 	text "?"
 	line "Das macht dann"
 	cont "¥@"
@@ -90,7 +90,7 @@ _LearnedMove1Text::
 	text_ram wLearnMoveMonName
 	text " lernt"
 	line "@"
-	text_ram wcf4b
+	text_ram wStringBuffer
 	text "!@"
 	text_end
 
@@ -101,7 +101,7 @@ _WhichMoveToForgetText::
 	done
 
 _AbandonLearningText::
-	text_ram wcf4b
+	text_ram wStringBuffer
 	text_start
 	line "nicht erlernen?"
 	done
@@ -110,7 +110,7 @@ _DidNotLearnText::
 	text_ram wLearnMoveMonName
 	text_start
 	line "hat @"
-	text_ram wcf4b
+	text_ram wStringBuffer
 	text_start
 	cont "nicht erlernt!"
 	prompt
@@ -120,7 +120,7 @@ _TryingToLearnText::
 	text_start
 	line "versucht,"
 	cont "@"
-	text_ram wcf4b
+	text_ram wStringBuffer
 	text " zu"
 	cont "erlernen!"
 
@@ -134,7 +134,7 @@ _TryingToLearnText::
 	para "Soll eine andere"
 	line "Attacke zugunsten"
 	cont "von @"
-	text_ram wcf4b
+	text_ram wStringBuffer
 	text_start
 	cont "vergessen werden?"
 	done
@@ -226,8 +226,18 @@ _CableClubNPCPleaseWaitText::
 	text_end
 
 _CableClubNPCLinkClosedBecauseOfInactivityText::
+	vc_patch Change_link_closed_inactivity_message
+IF DEF(_RED_VC) || DEF(_BLUE_VC)
+	text "Please come again!"
+	done
+	text_start
+	text "sed because of"
+	cont "inactivity."
+ELSE
 	text "Die Verbindung"
 	line "wurde getrennt."
+ENDC
+	vc_patch_end
 
 	para "Es erfolgte keine"
 	line "Bestätigung von"

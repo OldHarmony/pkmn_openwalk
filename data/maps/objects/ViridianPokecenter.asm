@@ -1,16 +1,22 @@
+	object_const_def
+	const_export VIRIDIANPOKECENTER_NURSE
+	const_export VIRIDIANPOKECENTER_GENTLEMAN
+	const_export VIRIDIANPOKECENTER_COOLTRAINER_M
+	const_export VIRIDIANPOKECENTER_LINK_RECEPTIONIST
+
 ViridianPokecenter_Object:
 	db $0 ; border block
 
-	def_warps
-	warp  3,  7, 0, LAST_MAP
-	warp  4,  7, 0, LAST_MAP
+	def_warp_events
+	warp_event  3,  7, LAST_MAP, 1
+	warp_event  4,  7, LAST_MAP, 1
 
-	def_signs
+	def_bg_events
 
-	def_objects
-	object SPRITE_NURSE, 3, 1, STAY, DOWN, 1 ; person
-	object SPRITE_GENTLEMAN, 10, 5, WALK, UP_DOWN, 2 ; person
-	object SPRITE_COOLTRAINER_M, 4, 3, STAY, NONE, 3 ; person
-	object SPRITE_LINK_RECEPTIONIST, 11, 2, STAY, DOWN, 4 ; person
+	def_object_events
+	object_event  3,  1, SPRITE_NURSE, STAY, DOWN, TEXT_VIRIDIANPOKECENTER_NURSE
+	object_event 10,  5, SPRITE_GENTLEMAN, WALK, UP_DOWN, TEXT_VIRIDIANPOKECENTER_GENTLEMAN
+	object_event  4,  3, SPRITE_COOLTRAINER_M, STAY, NONE, TEXT_VIRIDIANPOKECENTER_COOLTRAINER_M
+	object_event 11,  2, SPRITE_LINK_RECEPTIONIST, STAY, DOWN, TEXT_VIRIDIANPOKECENTER_LINK_RECEPTIONIST
 
 	def_warps_to VIRIDIAN_POKECENTER

@@ -66,7 +66,7 @@ MainMenu:
 	ld a, [wSaveFileStatus]
 	ld [wMaxMenuItem], a
 	call HandleMenuInput
-	bit 1, a ; pressed B?
+	bit BIT_B_BUTTON, a
 	jp nz, DisplayTitleScreen ; if so, go back to the title screen
 	ld c, 20
 	call DelayFrames
@@ -121,13 +121,13 @@ MainMenu:
 	ld [wDestinationMap], a
 	ld hl, wd732
 	set 2, [hl] ; fly warp or dungeon warp
-	call SpecialWarpIn
+	call PrepareForSpecialWarp
 	jp SpecialEnterMap
 
 InitOptions:
-	ld a, 1 ; no delay
+	ld a, TEXT_DELAY_FAST
 	ld [wLetterPrintingDelayFlags], a
-	ld a, 3 ; medium speed
+	ld a, TEXT_DELAY_MEDIUM
 	ld [wOptions], a
 	ret
 
@@ -184,13 +184,13 @@ LinkMenu:
 	ld b, a
 	and $f0
 	cp $d0
-	jr z, .asm_5c7d
+	jr z, .checkEnemyMenuSelection
 	ld a, [wLinkMenuSelectionReceiveBuffer + 1]
 	ld b, a
 	and $f0
 	cp $d0
 	jr nz, .exchangeMenuSelectionLoop
-.asm_5c7d
+.checkEnemyMenuSelection
 	ld a, b
 	and $c ; did the enemy press A or B?
 	jr nz, .enemyPressedAOrB
@@ -268,10 +268,10 @@ LinkMenu:
 	ld c, 50
 	call DelayFrames
 	ld hl, wd732
-	res 1, [hl]
+	res BIT_DEBUG_MODE, [hl]
 	ld a, [wDefaultMap]
 	ld [wDestinationMap], a
-	call SpecialWarpIn
+	call PrepareForSpecialWarp
 	ld c, 20
 	call DelayFrames
 	xor a
@@ -284,9 +284,11 @@ LinkMenu:
 .choseCancel
 	xor a
 	ld [wMenuJoypadPollCount], a
+	vc_hook Wireless_net_stop
 	call Delay3
 	call CloseLinkConnection
 	ld hl, LinkCanceledText
+	vc_hook Wireless_net_end
 	call PrintText
 	ld hl, wd72e
 	res 6, [hl]
@@ -306,7 +308,13 @@ LinkCanceledText:
 
 StartNewGame:
 	ld hl, wd732
-	res 1, [hl]
+	; Ensure debug mode is not used when
+	; starting a regular new game.
+	; Debug mode persists in saved games for
+	; both debug and non-debug builds, and is
+	; only reset here by the main menu.
+	res BIT_DEBUG_MODE, [hl]
+	; fallthrough
 StartNewGameDebug:
 	call OakSpeech
 	ld c, 20
@@ -477,11 +485,11 @@ DisplayOptionMenu:
 	ld b, a
 	and A_BUTTON | B_BUTTON | START | D_RIGHT | D_LEFT | D_UP | D_DOWN ; any key besides select pressed?
 	jr z, .getJoypadStateLoop
-	bit 1, b ; B button pressed?
+	bit BIT_B_BUTTON, b
 	jr nz, .exitMenu
-	bit 3, b ; Start button pressed?
+	bit BIT_START, b
 	jr nz, .exitMenu
-	bit 0, b ; A button pressed?
+	bit BIT_A_BUTTON, b
 	jr z, .checkDirectionKeys
 	ld a, [wTopMenuItemY]
 	cp 16 ; is the cursor on Cancel?
@@ -496,9 +504,9 @@ DisplayOptionMenu:
 	jp .loop
 .checkDirectionKeys
 	ld a, [wTopMenuItemY]
-	bit 7, b ; Down pressed?
+	bit BIT_D_DOWN, b
 	jr nz, .downPressed
-	bit 6, b ; Up pressed?
+	bit BIT_D_UP, b
 	jr nz, .upPressed
 	cp 8 ; cursor in Battle Animation section?
 	jr z, .cursorInBattleAnimation
@@ -507,7 +515,7 @@ DisplayOptionMenu:
 	cp 16 ; cursor on Cancel?
 	jr z, .loop
 .cursorInTextSpeed
-	bit 5, b ; Left pressed?
+	bit BIT_D_LEFT, b
 	jp nz, .pressedLeftInTextSpeed
 	jp .pressedRightInTextSpeed
 .downPressed
@@ -678,11 +686,10 @@ SetCursorPositionsFromOptions:
 ; 00: X coordinate of menu cursor
 ; 01: delay after printing a letter (in frames)
 TextSpeedOptionData:
-	db 14, 5 ; Slow
-	db  7, 3 ; Medium
-	db  1, 1 ; Fast
-	db 7 ; default X coordinate (Medium)
-	db -1 ; end
+	db 14, TEXT_DELAY_SLOW
+	db  7, TEXT_DELAY_MEDIUM
+	db  1, TEXT_DELAY_FAST
+	db  7, -1 ; end (default X coordinate)
 
 CheckForPlayerNameInSRAM:
 ; Check if the player name data in SRAM has a string terminator character

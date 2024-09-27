@@ -68,6 +68,7 @@
 	const CRED_ZEHTAPPERT     ; $41
 	const CRED_NOAPRODTEST    ; $42
 	const CRED_HUDSONBUECHELE ; $43
+DEF NUM_CRED_STRINGS EQU const_value
 
 	const_def -1, -1
 	const CRED_TEXT_FADE_MON ; $FF

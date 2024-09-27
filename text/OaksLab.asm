@@ -1,10 +1,10 @@
-_OaksLabGaryText1::
+_OaksLabRivalGrampsIsntAroundText::
 	text "<RIVAL>: Hallo"
 	line "<PLAYER>! Opa ist"
 	cont "gerade nicht da!"
 	done
 
-_OaksLabText40::
+_OaksLabRivalGoAheadAndChooseText::
 	text "<RIVAL>: Ich bin"
 	line "nicht so"
 	cont "ungeduldig wie"
@@ -14,32 +14,32 @@ _OaksLabText40::
 	line "wählen, <PLAYER>!"
 	done
 
-_OaksLabText41::
+_OaksLabRivalMyPokemonLooksStrongerText::
 	text "<RIVAL>: Mein"
 	line "#MON sieht"
 	cont "viel stärker aus!"
 	done
 
-_OaksLabText39::
+_OaksLabThoseArePokeBallsText::
 	text "Dies hier sind"
 	line "#BÄLLE."
 	cont "Sie enthalten "
 	cont "#MON!"
 	done
 
-_OaksLabCharmanderText::
+_OaksLabYouWantCharmanderText::
 	text "Möchtest Du"
 	line "GLUMANDA, das"
 	cont "FEUER-#MON?"
 	done
 
-_OaksLabSquirtleText::
+_OaksLabYouWantSquirtleText::
 	text "Möchtest Du"
 	line "SCHIGGY, das"
 	cont "WASSER-#MON?"
 	done
 
-_OaksLabBulbasaurText::
+_OaksLabYouWantBulbasaurText::
 	text "Möchtest Du"
 	line "BISASAM, das"
 	cont "PFLANZEN-#MON?"
@@ -64,14 +64,14 @@ _OaksLabLastMonText::
 	cont "#MON!"
 	done
 
-_OaksLabText_1d2f0::
+_OaksLabOak1WhichPokemonDoYouWantText::
 	text "PROF. EICH: Gut,"
 	line "<PLAYER>! Welches"
 	cont "#MON möchtest"
 	cont "Du haben?"
 	done
 
-_OaksLabText_1d2f5::
+_OaksLabOak1YourPokemonCanFightText::
 	text "PROF. EICH: Wenn"
 	line "Du auf ein wildes"
 	cont "#MON triffst,"
@@ -80,7 +80,7 @@ _OaksLabText_1d2f5::
 	cont "kämpfen!"
 	done
 
-_OaksLabText_1d2fa::
+_OaksLabOak1RaiseYourYoungPokemonText::
 	text "PROF. EICH:"
 	line "<PLAYER>, wenn"
 	cont "Du Dein #MON"
@@ -88,7 +88,7 @@ _OaksLabText_1d2fa::
 	cont "wird es stärker!"
 	done
 
-_OaksLabDeliverParcelText1::
+_OaksLabOak1DeliverParcelText::
 	text "PROF. EICH:"
 	line "Hallo, <PLAYER>!"
 
@@ -111,7 +111,7 @@ _OaksLabDeliverParcelText1::
 	cont "PAKET.@"
 	text_end
 
-_OaksLabDeliverParcelText2::
+_OaksLabOak1ParcelThanksText::
 	text_start
 	para "Ah! Auf diesen"
 	line "SPEZIAL-#BALL"
@@ -120,14 +120,14 @@ _OaksLabDeliverParcelText2::
 	cont "Vielen Dank!"
 	done
 
-_OaksLabAroundWorldText::
+_OaksLabOak1PokemonAroundTheWorldText::
 	text "<PLAYER>,"
 	line "überall in dieser"
 	cont "Welt erwarten"
 	cont "Dich #MON!"
 	done
 
-_OaksLabGivePokeballsText1::
+_OaksLabOak1ReceivedPokeballsText::
 	text "PROF. EICH:"
 	line "Es reicht nicht, "
 	cont "#MON zu sehen,"
@@ -146,7 +146,7 @@ _OaksLabGivePokeballsText1::
 	line "fünf #BÄLLE!@"
 	text_end
 
-_OaksLabGivePokeballsText2::
+_OaksLabGivePokeballsExplanationText::
 	text_start
 	para "Taucht ein wildes"
 	line "#MON auf,"
@@ -168,7 +168,7 @@ _OaksLabGivePokeballsText2::
 	cont "haben!"
 	done
 
-_OaksLabPleaseVisitText::
+_OaksLabOak1ComeSeeMeSometimesText::
 	text "PROF. EICH:"
 	line "Besuche mich von"
 	cont "Zeit zu Zeit."
@@ -179,7 +179,7 @@ _OaksLabPleaseVisitText::
 	cont "voranschreitest."
 	done
 
-_OaksLabText_1d31d::
+_OaksLabOak1HowIsYourPokedexComingText::
 	text "PROF. EICH:"
 	line "Ich freue mich,"
 	cont "Dich zu sehen!"
@@ -188,18 +188,18 @@ _OaksLabText_1d31d::
 	cont "doch mal her!"
 	prompt
 
-_OaksLabText_1d32c::
+_OaksLabPokedexText::
 	text "Es sieht wie ein"
 	line "Lexikon aus! Aber"
 	cont "die Seiten sind"
 	cont "unbeschrieben!"
 	done
 
-_OaksLabText8::
+_OaksLabOak2Text::
 	text "?"
 	done
 
-_OaksLabText_1d340::
+_OaksLabGirlText::
 	text "PROF. EICH ist"
 	line "für #MON"
 	cont "eine Kapazität!"
@@ -210,13 +210,13 @@ _OaksLabText_1d340::
 	cont "Ansehen!"
 	done
 
-_OaksLabRivalWaitingText::
+_OaksLabRivalFedUpWithWaitingText::
 	text "<RIVAL>: Opa!"
 	line "Ich will nicht"
 	cont "länger warten!"
 	done
 
-_OaksLabChooseMonText::
+_OaksLabOakChooseMonText::
 	text "PROF. EICH:"
 	line "<RIVAL>? Laß mich"
 	cont "nachdenken..."
@@ -249,13 +249,13 @@ _OaksLabChooseMonText::
 	cont "eines ab! Wähle!"
 	done
 
-_OaksLabRivalInterjectionText::
+_OaksLabRivalWhatAboutMeText::
 	text "<RIVAL>: Halt!"
 	line "Opa! Und was ist"
 	cont "mit mir?"
 	done
 
-_OaksLabBePatientText::
+_OaksLabOakBePatientText::
 	text "PROF. EICH:"
 	line "Habe ein wenig"
 	cont "Geduld, <RIVAL>!"
@@ -263,14 +263,14 @@ _OaksLabBePatientText::
 	cont "eines bekommen!"
 	done
 
-_OaksLabLeavingText::
+_OaksLabOakDontGoAwayYetText::
 	text "PROF. EICH:"
 	line "Warte noch einen"
 	cont "Moment, bevor Du"
 	cont "gehst!"
 	done
 
-_OaksLabRivalPickingMonText::
+_OaksLabRivalIllTakeThisOneText::
 	text "<RIVAL>:"
 	line "Ich nehme dieses"
 	cont "hier."
@@ -283,7 +283,7 @@ _OaksLabRivalReceivedMonText::
 	text "!@"
 	text_end
 
-_OaksLabRivalChallengeText::
+_OaksLabRivalIllTakeYouOnText::
 	text "<RIVAL>: Warte,"
 	line "<PLAYER>!"
 	cont "Laß uns unsere"
@@ -294,7 +294,7 @@ _OaksLabRivalChallengeText::
 	cont "heraus!"
 	done
 
-_OaksLabText_1d3be::
+_OaksLabRivalIPickedTheWrongPokemonText::
 	text "WAS?"
 	line "Unmöglich! Ich"
 	cont "habe mir das"
@@ -302,12 +302,12 @@ _OaksLabText_1d3be::
 	cont "ausgesucht!"
 	prompt
 
-_OaksLabText_1d3c3::
+_OaksLabRivalAmIGreatOrWhatText::
 	text "<RIVAL>: Ja! Ich"
 	line "bin der Größte!"
 	prompt
 
-_OaksLabRivalToughenUpText::
+_OaksLabRivalSmellYouLaterText::
 	text "<RIVAL>: OK!"
 	line "Ich werde meine"
 	cont "#MON"
@@ -320,24 +320,24 @@ _OaksLabRivalToughenUpText::
 	cont "später!"
 	done
 
-_OaksLabText21::
+_OaksLabRivalGrampsText::
 	text "<RIVAL>: Opa!"
 	done
 
-_OaksLabText22::
+_OaksLabRivalWhatDidYouCallMeForText::
 	text "<RIVAL>: Warum"
 	line "hast Du mich"
 	cont "hierher bestellt?"
 	done
 
-_OaksLabText23::
+_OaksLabOakIHaveARequestText::
 	text "PROF. EICH:"
 	line "Ach ja! Ich"
 	cont "habe eine große"
 	cont "Aufgabe für Euch!"
 	done
 
-_OaksLabText24::
+_OaksLabOakMyInventionPokedexText::
 	text "Auf dem Tisch"
 	line "dort seht Ihr"
 	cont "eine Erfindung"
@@ -354,7 +354,7 @@ _OaksLabText24::
 	line "Hi-Tech-Lexikon!"
 	done
 
-_OaksLabText25::
+_OaksLabOakGotPokedexText::
 	text "PROF. EICH:"
 	line "<PLAYER>! <RIVAL>!"
 	cont "Diese beiden sind"
@@ -365,7 +365,7 @@ _OaksLabText25::
 	cont "PROF. EICH!@"
 	text_end
 
-_OaksLabText26::
+_OaksLabOakThatWasMyDreamText::
 	text "Ein Lexikon über"
 	line "alle #MON der"
 	cont "Welt..."
@@ -392,7 +392,7 @@ _OaksLabText26::
 	cont "#MON!"
 	done
 
-_OaksLabText27::
+_OaksLabRivalLeaveItAllToMeText::
 	text "<RIVAL>:"
 	line "Alles klar, Opa!"
 	cont "Überlaß es"
@@ -413,147 +413,9 @@ _OaksLabText27::
 	cont "<PLAYER>! Hahaha!"
 	done
 
-_OaksLabText_1d405::
+_OaksLabScientistText::
 	text "Ich bin PROF."
 	line "EICHS Gehilfe."
 	cont "Ich studiere mit"
 	cont "ihm die #MON!"
-	done
-
-_OaksLabText_441cc::
-	text "In Deinem #DEX"
-	line "steht:"
-
-	para "Gesehen: @"
-	text_decimal hDexRatingNumMonsSeen, 1, 3
-	text " PKMN"
-	line "Besitz: @"
-	text_decimal hDexRatingNumMonsOwned, 1, 3
-	text " PKMN"
-
-	para "PROF. EICHS"
-	line "Bewertung:"
-	prompt
-
-_OaksLabText_44201::
-	text "Du hast noch eine"
-	line "Menge Arbeit vor"
-	cont "Dir. Suche in"
-	cont "hohem Gras nach"
-	cont "#MON!"
-	done
-
-_OaksLabText_44206::
-	text "Das sieht schon"
-	line "ganz gut aus!"
-	cont "Hole Dir bei"
-	cont "meinem Gehilfen"
-	cont "die VM BLITZ ab!"
-	done
-
-_OaksLabText_4420b::
-	text "Du benötigst noch"
-	line "weitere!"
-	cont "Fange also die"
-	cont "verschiedensten"
-	cont "#MON!"
-	done
-
-_OaksLabText_44210::
-	text "Sehr gut!"
-	line "Du gibst Dir sehr"
-	cont "viel Mühe! Hole"
-	cont "Dir bei meinem"
-	cont "Gehilfen einen"
-	cont "DETEKTOR ab!"
-	done
-
-_OaksLabText_44215::
-	text "Das sieht gut"
-	line "aus! Suche meinen"
-	cont "Gehilfen auf,"
-	cont "sobald Du fünfzig"
-	cont "#MON besitzt!"
-	done
-
-_OaksLabText_4421a::
-	text "Du hast bereits"
-	line "50 verschiedene"
-	cont "#MON gefangen!"
-	cont "Hole Dir bei"
-	cont "meinem Gehilfen"
-	cont "den EP-TEILER ab!"
-	done
-
-_OaksLabText_4421f::
-	text "Hey! Es wird"
-	line "immer besser!"
-	done
-
-_OaksLabText_44224::
-	text "Fantastisch!"
-	line "Du solltest Dir"
-	cont "WASSER-#MON"
-	cont "angeln!"
-	done
-
-_OaksLabText_44229::
-	text "Wundervoll! Du"
-	line "bist ein leiden-"
-	cont "schaftlicher"
-	cont "Sammler!"
-	done
-
-_OaksLabText_4422e::
-	text "Ich bin wirklich"
-	line "beeindruckt! Das"
-	cont "war sicher eine"
-	cont "Menge Arbeit!"
-	done
-
-_OaksLabText_44233::
-	text "Du hast bereits"
-	line "100 verschiedene"
-	cont "#MON!"
-	cont "Du leistest"
-	cont "hervorragende"
-	cont "Arbeit!"
-	done
-
-_OaksLabText_44238::
-	text "Super! Einige"
-	line "Deiner #MON"
-	cont "haben sich sogar"
-	cont "entwickelt!"
-	done
-
-_OaksLabText_4423d::
-	text "Ausgezeichnet!"
-	line "Tausche #MON"
-	cont "mit Freunden, um"
-	cont "weitere zu"
-	cont "erhalten!"
-	done
-
-_OaksLabText_44242::
-	text "Überragend!"
-	line "Du hast Dich zu"
-	cont "einem echten"
-	cont "Profi gemausert!"
-	done
-
-_OaksLabText_44247::
-	text "Ich bin"
-	line "sprachlos!"
-	cont "Von nun an giltst"
-	cont "Du als Autorität"
-	cont "für #MON!"
-	done
-
-_OaksLabText_4424c::
-	text "Dein #DEX"
-	line "ist komplett"
-	cont "fertiggestellt!"
-	cont "Herzlichen"
-	cont "Glückwunsch!"
 	done
