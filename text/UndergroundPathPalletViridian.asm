@@ -30,3 +30,11 @@ _UndergroundPathPalletViridian_RocketGuyText2::
 	text_bcd wPlayerMoney, 3 | LEADING_ZEROES | LEFT_ALIGN
 	text " haben?"
 	done
+
+_UndergroundPathPalletViridian_RocketGuyText3::
+	text "Wenn das so ist."
+
+	para "Verschwinde und"
+	line "spiel wo anders"
+	cont "kleiner."
+	done

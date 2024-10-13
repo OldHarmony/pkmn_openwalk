@@ -84,7 +84,15 @@ UndergroundPathPalletViridianRocketGuyTalkToPlayerScript:
 	ldh [hSpriteIndexOrTextID], a
 	call DisplayTextID
 
+	ld a, [wCurrentMenuItem]
+	and a
+	jr nz, .noSelected
+.yesSelected
 	ld a, SCRIPT_UNDERGROUNDPATHPALLETVIRIDIAN_NOOP
+	ld [wUndergroundPathPalletViridianCurScript], a
+	ret
+.noSelected
+	ld a, SCRIPT_UNDERGROUNDPATHPALLETVIRIDIAN_DEFAULT
 	ld [wUndergroundPathPalletViridianCurScript], a
 	ret
 
@@ -100,7 +108,7 @@ UndergroundPathPalletViridian_RocketGuyTextScript:
 	call YesNoChoice
 	ld a, [wCurrentMenuItem]
 	and a
-	jr nz, .text_script_end
+	jr nz, .goway
 	lb bc, MEW, 2
 	call GivePokemon
 	jr nc, .text_script_end
@@ -108,6 +116,32 @@ UndergroundPathPalletViridian_RocketGuyTextScript:
 	ld [wPlayerMoney], a
 	ld [wPlayerMoney + 1], a
 	ld [wPlayerMoney + 2], a
+	jr .text_script_end
+.goway
+	ld a, SFX_STOP_ALL_MUSIC
+	call PlaySound
+	ld a, BANK(Music_MeetEvilTrainer)
+	ld c, a
+	ld a, MUSIC_MEET_EVIL_TRAINER
+	call PlayMusic
+	ld hl, UndergroundPathPalletViridian_RocketGuyText3
+	call PrintText
+	ld a, $1
+	ld [wSimulatedJoypadStatesIndex], a
+.DetectPlayerDirection
+	ld a, [wPlayerDirection]
+	cp PLAYER_DIR_DOWN
+	jr z, .PlayerLookDown
+.PlayerLookLeft
+	ld a, D_RIGHT
+	jp .StartWalk
+.PlayerLookDown
+	ld a, D_UP
+.StartWalk
+	ld [wSimulatedJoypadStatesEnd], a
+	call StartSimulatingJoypadStates
+	call UpdateSprites
+	call PlayDefaultMusic ; reset to map music
 .text_script_end
 	jp TextScriptEnd
 
@@ -118,3 +152,8 @@ UndergroundPathPalletViridian_RocketGuyText1:
 UndergroundPathPalletViridian_RocketGuyText2:
 	text_far _UndergroundPathPalletViridian_RocketGuyText2
 	text_end
+
+UndergroundPathPalletViridian_RocketGuyText3:
+	text_far _UndergroundPathPalletViridian_RocketGuyText3
+	text_end
+	
