@@ -39,13 +39,14 @@ UndergroundPathPalletViridianDefaultScript:
 	ret
 
 UndergroundPathPalletViridian_RocketGuy_sees_Player_Coords:
-	dbmapcoord 2, 10
-	dbmapcoord 3, 10
-	dbmapcoord 4, 10
-	dbmapcoord 5, 10
-	dbmapcoord 5, 11
-	dbmapcoord 5, 12
-	dbmapcoord 5, 13
+	dbmapcoord 6, 16
+	dbmapcoord 7, 16
+	dbmapcoord 8, 16
+	dbmapcoord 9, 16
+	dbmapcoord 6, 22
+	dbmapcoord 7, 22
+	dbmapcoord 8, 22
+	dbmapcoord 9, 22
 	db -1 ; end
 
 UndergroundPathPalletViridianRocketGuyWalksToPlayerScript:
@@ -132,8 +133,8 @@ UndergroundPathPalletViridian_RocketGuyTextScript:
 	ld a, [wPlayerDirection]
 	cp PLAYER_DIR_DOWN
 	jr z, .PlayerLookDown
-.PlayerLookLeft
-	ld a, D_RIGHT
+.PlayerLookUp
+	ld a, D_DOWN
 	jp .StartWalk
 .PlayerLookDown
 	ld a, D_UP
