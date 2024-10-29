@@ -27,6 +27,20 @@ UndergroundPathPalletViridianDefaultScript:
 	ld c, a
 	ld a, MUSIC_MEET_EVIL_TRAINER
 	call PlayMusic
+.DetectPlayerDirection
+	ld a, [wPlayerDirection]
+	cp PLAYER_DIR_DOWN
+	jr z, .PlayerLookDown
+.PlayerLookUp
+	ld a, SPRITE_FACING_DOWN
+	jp .ShowHinterOverPlayer
+.PlayerLookDown
+	ld a, SPRITE_FACING_UP
+.ShowHinterOverPlayer
+	ldh [hSpriteFacingDirection], a
+	ld a, UNDERGROUNDPATHPALLETVIRIDIAN_ROCKETGUY
+	ldh [hSpriteIndex], a
+	call SetSpriteFacingDirectionAndDelay
 	xor a
 	ld [wEmotionBubbleSpriteIndex], a ; player's sprite
 	ld [wWhichEmotionBubble], a ; EXCLAMATION_BUBBLE
