@@ -7,6 +7,7 @@ UndergroundPathPalletViridian_Script:
 UndergroundPathPalletViridian_ScriptPointers:
 	def_script_pointers
 	dw_const UndergroundPathPalletViridianDefaultScript,                SCRIPT_UNDERGROUNDPATHPALLETVIRIDIAN_DEFAULT
+	dw_const UndergroundPathPalletViridianPlayerGiveRocketGuyAttention, SCRIPT_UNDERGROUNDPATHPALLETVIRIDIAN_PLAYER_GIVE_ROCKETGUY_ATTENTION
 	dw_const UndergroundPathPalletViridianRocketGuyWalksToPlayerScript, SCRIPT_UNDERGROUNDPATHPALLETVIRIDIAN_ROCKETGUY_WALKS_TO_PLAYER
 	dw_const UndergroundPathPalletViridianRocketGuyTalkToPlayerScript,  SCRIPT_UNDERGROUNDPATHPALLETVIRIDIAN_ROCKETGUY_TALK_TO_PLAYER
 	dw_const UndergroundPathPalletViridianDisableScript,                SCRIPT_UNDERGROUNDPATHPALLETVIRIDIAN_NOOP
@@ -41,6 +42,16 @@ UndergroundPathPalletViridianDefaultScript:
 	ld a, UNDERGROUNDPATHPALLETVIRIDIAN_ROCKETGUY
 	ldh [hSpriteIndex], a
 	call SetSpriteFacingDirectionAndDelay
+	ld a, SCRIPT_UNDERGROUNDPATHPALLETVIRIDIAN_PLAYER_GIVE_ROCKETGUY_ATTENTION
+	ld [wUndergroundPathPalletViridianCurScript], a
+	ret
+
+UndergroundPathPalletViridianPlayerGiveRocketGuyAttention:
+	; waiting for rocket guy is ready to look to player
+	ld a, [wd730]
+	bit 0, a
+	ret nz
+
 	xor a
 	ld [wEmotionBubbleSpriteIndex], a ; player's sprite
 	ld [wWhichEmotionBubble], a ; EXCLAMATION_BUBBLE
