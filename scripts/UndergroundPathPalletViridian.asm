@@ -21,7 +21,7 @@ UndergroundPathPalletViridianDefaultScript:
 	ld a, [wPartyCount]
 	cp $00
 	ret nz
-	ld hl, UndergroundPathPalletViridian_RocketGuy_sees_Player_Coords
+	ld hl, .RocketGuy_sees_Player_Coords
 	call ArePlayerCoordsInArray
 	ret nc
 	ld a, SELECT | START | D_RIGHT | D_LEFT | D_UP | D_DOWN
@@ -50,6 +50,17 @@ UndergroundPathPalletViridianDefaultScript:
 	ld [wUndergroundPathPalletViridianCurScript], a
 	ret
 
+.RocketGuy_sees_Player_Coords:
+	dbmapcoord 6, 16
+	dbmapcoord 7, 16
+	dbmapcoord 8, 16
+	dbmapcoord 9, 16
+	dbmapcoord 6, 22
+	dbmapcoord 7, 22
+	dbmapcoord 8, 22
+	dbmapcoord 9, 22
+	db -1 ; end
+	
 UndergroundPathPalletViridianPlayerGiveRocketGuyAttention:
 	; waiting for rocket guy is ready to look to player
 	WaitForSpritsMoveFinish
@@ -64,17 +75,6 @@ UndergroundPathPalletViridianPlayerGiveRocketGuyAttention:
 	ld a, SCRIPT_UNDERGROUNDPATHPALLETVIRIDIAN_ROCKETGUY_WALKS_TO_PLAYER
 	ld [wUndergroundPathPalletViridianCurScript], a
 	ret
-
-UndergroundPathPalletViridian_RocketGuy_sees_Player_Coords:
-	dbmapcoord 6, 16
-	dbmapcoord 7, 16
-	dbmapcoord 8, 16
-	dbmapcoord 9, 16
-	dbmapcoord 6, 22
-	dbmapcoord 7, 22
-	dbmapcoord 8, 22
-	dbmapcoord 9, 22
-	db -1 ; end
 
 UndergroundPathPalletViridianRocketGuyWalksToPlayerScript:
 	ld a, $1
