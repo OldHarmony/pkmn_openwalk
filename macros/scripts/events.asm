@@ -446,3 +446,9 @@ MACRO AdjustEventBit
 		add ((\1) % 8) - (\2)
 	ENDC
 ENDM
+
+MACRO WaitForSpritsMoveFinish
+	ld a, [wd730]
+	bit 0, a
+	ret nz
+ENDM

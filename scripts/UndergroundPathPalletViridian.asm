@@ -16,12 +16,16 @@ UndergroundPathPalletViridianDisableScript:
 	ret
 
 UndergroundPathPalletViridianDefaultScript:
+	; waiting for rocket guy is ready to look to player
+	WaitForSpritsMoveFinish
 	ld a, [wPartyCount]
 	cp $00
 	ret nz
 	ld hl, UndergroundPathPalletViridian_RocketGuy_sees_Player_Coords
 	call ArePlayerCoordsInArray
 	ret nc
+	ld a, SELECT | START | D_RIGHT | D_LEFT | D_UP | D_DOWN
+	ld [wJoyIgnore], a
 	ld a, SFX_STOP_ALL_MUSIC
 	call PlaySound
 	ld a, BANK(Music_MeetEvilTrainer)
@@ -48,9 +52,7 @@ UndergroundPathPalletViridianDefaultScript:
 
 UndergroundPathPalletViridianPlayerGiveRocketGuyAttention:
 	; waiting for rocket guy is ready to look to player
-	ld a, [wd730]
-	bit 0, a
-	ret nz
+	WaitForSpritsMoveFinish
 
 	xor a
 	ld [wEmotionBubbleSpriteIndex], a ; player's sprite
@@ -75,9 +77,6 @@ UndergroundPathPalletViridian_RocketGuy_sees_Player_Coords:
 	db -1 ; end
 
 UndergroundPathPalletViridianRocketGuyWalksToPlayerScript:
-	ld a, SELECT | START | D_RIGHT | D_LEFT | D_UP | D_DOWN
-	ld [wJoyIgnore], a
-
 	ld a, $1
 	ldh [hNPCPlayerRelativePosPerspective], a
 	ld a, $1
@@ -99,9 +98,7 @@ UndergroundPathPalletViridianRocketGuyWalksToPlayerScript:
 
 UndergroundPathPalletViridianRocketGuyTalkToPlayerScript:
 	; waiting for rocket guy is ready to walk to player
-	ld a, [wd730]
-	bit 0, a
-	ret nz
+	WaitForSpritsMoveFinish
 
 	xor a
 	ld [wJoyIgnore], a
