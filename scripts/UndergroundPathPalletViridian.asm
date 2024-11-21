@@ -10,6 +10,8 @@ UndergroundPathPalletViridian_ScriptPointers:
 	dw_const UndergroundPathPalletViridianPlayerGiveRocketGuyAttention, SCRIPT_UNDERGROUNDPATHPALLETVIRIDIAN_PLAYER_GIVE_ROCKETGUY_ATTENTION
 	dw_const UndergroundPathPalletViridianRocketGuyWalksToPlayerScript, SCRIPT_UNDERGROUNDPATHPALLETVIRIDIAN_ROCKETGUY_WALKS_TO_PLAYER
 	dw_const UndergroundPathPalletViridianRocketGuyTalkToPlayerScript,  SCRIPT_UNDERGROUNDPATHPALLETVIRIDIAN_ROCKETGUY_TALK_TO_PLAYER
+	dw_const UndergroundPathPalletViridianRocketGuyWalksBackScript,     SCRIPT_UNDERGROUNDPATHPALLETVIRIDIAN_ROCKETGUY_WALKS_BACK
+	dw_const UndergroundPathPalletViridianResetScript,                  SCRIPT_UNDERGROUNDPATHPALLETVIRIDIAN_RESET,
 	dw_const UndergroundPathPalletViridianDisableScript,                SCRIPT_UNDERGROUNDPATHPALLETVIRIDIAN_NOOP
 
 UndergroundPathPalletViridianDisableScript:
@@ -107,7 +109,62 @@ UndergroundPathPalletViridianRocketGuyTalkToPlayerScript:
 	ldh [hSpriteIndexOrTextID], a
 	call DisplayTextID
 
-	ld a, [wCurrentMenuItem]
+	ld a, SCRIPT_UNDERGROUNDPATHPALLETVIRIDIAN_ROCKETGUY_WALKS_BACK
+	ld [wUndergroundPathPalletViridianCurScript], a
+	ret
+
+UndergroundPathPalletViridianRocketGuyWalksBackScript:
+	ld a, [wPlayerDirection]
+	cp PLAYER_DIR_DOWN
+	jr z, .PlayerLookDown
+.PlayerLookUp
+	ld a, [wUndergroundPathPalletViridianPlayerBuyedMew]
+	and a
+	jr nz, .noSelected1
+.yesSelected1
+	ld de, .RocketGuyWalkUp4
+	jp .move
+.noSelected1
+	ld de, .RocketGuyWalkDown2
+	jp .move
+.PlayerLookDown
+	ld a, [wUndergroundPathPalletViridianPlayerBuyedMew]
+	and a
+	jr nz, .noSelected2
+.yesSelected2
+	ld de, .RocketGuyWalkDown4
+	jp .move
+.noSelected2
+	ld de, .RocketGuyWalkUp2
+
+.move
+	ld a, UNDERGROUNDPATHPALLETVIRIDIAN_ROCKETGUY
+	ldh [hSpriteIndex], a
+	call MoveSprite
+
+	ld a, SCRIPT_UNDERGROUNDPATHPALLETVIRIDIAN_RESET
+	ld [wUndergroundPathPalletViridianCurScript], a
+	ret
+
+.RocketGuyWalkDown4
+	db NPC_MOVEMENT_DOWN
+	db NPC_MOVEMENT_DOWN
+.RocketGuyWalkDown2
+	db NPC_MOVEMENT_DOWN
+	db NPC_MOVEMENT_DOWN
+	db -1
+
+.RocketGuyWalkUp4
+	db NPC_MOVEMENT_UP
+	db NPC_MOVEMENT_UP
+.RocketGuyWalkUp2
+	db NPC_MOVEMENT_UP
+	db NPC_MOVEMENT_UP
+	db -1
+
+UndergroundPathPalletViridianResetScript:
+	WaitForSpritsMoveFinish
+	ld a, [wUndergroundPathPalletViridianPlayerBuyedMew]
 	and a
 	jr nz, .noSelected
 .yesSelected
@@ -130,6 +187,7 @@ UndergroundPathPalletViridian_RocketGuyTextScript:
 	call PrintText
 	call YesNoChoice
 	ld a, [wCurrentMenuItem]
+	ld [wUndergroundPathPalletViridianPlayerBuyedMew], a
 	and a
 	jr nz, .goway
 	lb bc, MEW, 2

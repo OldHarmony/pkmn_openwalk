@@ -2017,6 +2017,7 @@ wCeruleanCaveB1FCurScript:: db
 wVictoryRoad1FCurScript:: db
 	ds 1
 wUndergroundPathPalletViridianCurScript:: db
+wUndergroundPathPalletViridianPlayerBuyedMew:: db
 wLancesRoomCurScript:: db
 	ds 4
 wSilphCo10FCurScript:: db
