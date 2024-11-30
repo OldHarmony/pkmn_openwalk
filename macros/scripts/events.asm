@@ -448,6 +448,9 @@ MACRO AdjustEventBit
 ENDM
 
 MACRO WaitForSpritsMoveFinish
+	ld a, SELECT | START | D_RIGHT | D_LEFT | D_UP | D_DOWN
+	ld [wJoyIgnore], a
+
 	ld a, [wd730]
 	bit 0, a
 	ret nz

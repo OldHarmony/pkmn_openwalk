@@ -18,8 +18,6 @@ UndergroundPathPalletViridianDisableScript:
 	ret
 
 UndergroundPathPalletViridianDefaultScript:
-	; waiting for rocket guy is ready to look to player
-	WaitForSpritsMoveFinish
 	ld a, [wPartyCount]
 	cp $00
 	ret nz
@@ -164,6 +162,8 @@ UndergroundPathPalletViridianRocketGuyWalksBackScript:
 
 UndergroundPathPalletViridianResetScript:
 	WaitForSpritsMoveFinish
+	xor a
+	ld [wJoyIgnore], a
 	ld a, [wUndergroundPathPalletViridianPlayerBuyedMew]
 	and a
 	jr nz, .noSelected
