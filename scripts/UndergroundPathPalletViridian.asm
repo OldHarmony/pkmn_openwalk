@@ -38,7 +38,7 @@ UndergroundPathPalletViridianDefaultScript:
 	jr z, .PlayerLookDown
 .PlayerLookUp
 	ld a, SPRITE_FACING_DOWN
-	jp .ShowHinterOverPlayer
+	jr .ShowHinterOverPlayer
 .PlayerLookDown
 	ld a, SPRITE_FACING_UP
 .ShowHinterOverPlayer
@@ -121,17 +121,17 @@ UndergroundPathPalletViridianRocketGuyWalksBackScript:
 	jr nz, .noSelected1
 .yesSelected1
 	ld de, .RocketGuyWalkUp4
-	jp .move
+	jr .move
 .noSelected1
 	ld de, .RocketGuyWalkDown2
-	jp .move
+	jr .move
 .PlayerLookDown
 	ld a, [wUndergroundPathPalletViridianPlayerBuyedMew]
 	and a
 	jr nz, .noSelected2
 .yesSelected2
 	ld de, .RocketGuyWalkDown4
-	jp .move
+	jr .move
 .noSelected2
 	ld de, .RocketGuyWalkUp2
 
