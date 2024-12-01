@@ -11,6 +11,7 @@ UndergroundPathPalletViridian_ScriptPointers:
 	dw_const UndergroundPathPalletViridianRocketGuyWalksToPlayerScript, SCRIPT_UNDERGROUNDPATHPALLETVIRIDIAN_ROCKETGUY_WALKS_TO_PLAYER
 	dw_const UndergroundPathPalletViridianRocketGuyTalkToPlayerScript,  SCRIPT_UNDERGROUNDPATHPALLETVIRIDIAN_ROCKETGUY_TALK_TO_PLAYER
 	dw_const UndergroundPathPalletViridianRocketGuyWalksBackScript,     SCRIPT_UNDERGROUNDPATHPALLETVIRIDIAN_ROCKETGUY_WALKS_BACK
+	dw_const UndergroundPathPalletViridianRocketGuyWalksLeftScript,     SCRIPT_UNDERGROUNDPATHPALLETVIRIDIAN_ROCKETGUY_WALKS_LEFT
 	dw_const UndergroundPathPalletViridianResetScript,                  SCRIPT_UNDERGROUNDPATHPALLETVIRIDIAN_RESET,
 	dw_const UndergroundPathPalletViridianDisableScript,                SCRIPT_UNDERGROUNDPATHPALLETVIRIDIAN_NOOP
 
@@ -140,7 +141,7 @@ UndergroundPathPalletViridianRocketGuyWalksBackScript:
 	ldh [hSpriteIndex], a
 	call MoveSprite
 
-	ld a, SCRIPT_UNDERGROUNDPATHPALLETVIRIDIAN_RESET
+	ld a, SCRIPT_UNDERGROUNDPATHPALLETVIRIDIAN_ROCKETGUY_WALKS_LEFT
 	ld [wUndergroundPathPalletViridianCurScript], a
 	ret
 
@@ -160,6 +161,40 @@ UndergroundPathPalletViridianRocketGuyWalksBackScript:
 	db NPC_MOVEMENT_UP
 	db -1
 
+UndergroundPathPalletViridianRocketGuyWalksLeftScript:
+	WaitForSpritsMoveFinish
+	ld a, [wXCoord]
+	sub $6
+	jr z, .RocketGuyLookLeft
+.walk1
+	ld de, .RocketGuyWalkLeft1
+	sub $1
+	jr z, .move
+.walk2
+	ld de, .RocketGuyWalkLeft2
+	sub $1
+	jr z, .move
+.walk3
+	ld de, .RocketGuyWalkLeft3
+						
+.move
+	ld a, UNDERGROUNDPATHPALLETVIRIDIAN_ROCKETGUY
+	ldh [hSpriteIndex], a
+	call MoveSprite
+.RocketGuyLookLeft
+
+	ld a, SCRIPT_UNDERGROUNDPATHPALLETVIRIDIAN_RESET
+	ld [wUndergroundPathPalletViridianCurScript], a
+	ret
+
+.RocketGuyWalkLeft3
+	db NPC_MOVEMENT_LEFT
+.RocketGuyWalkLeft2
+	db NPC_MOVEMENT_LEFT
+.RocketGuyWalkLeft1
+	db NPC_MOVEMENT_LEFT
+	db -1
+						
 UndergroundPathPalletViridianResetScript:
 	WaitForSpritsMoveFinish
 	xor a
