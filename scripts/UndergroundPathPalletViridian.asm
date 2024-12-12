@@ -199,6 +199,7 @@ UndergroundPathPalletViridianResetScript:
 	WaitForSpritsMoveFinish
 	xor a
 	ld [wJoyIgnore], a
+	call PlayDefaultMusic ; reset to map music
 	ld a, [wUndergroundPathPalletViridianPlayerBuyedMew]
 	and a
 	jr nz, .noSelected
@@ -257,7 +258,6 @@ UndergroundPathPalletViridian_RocketGuyTextScript:
 	ld [wSimulatedJoypadStatesEnd], a
 	call StartSimulatingJoypadStates
 	call UpdateSprites
-	call PlayDefaultMusic ; reset to map music
 .text_script_end
 	jp TextScriptEnd
 
