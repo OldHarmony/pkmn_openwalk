@@ -71,7 +71,7 @@ UndergroundPathPalletViridianPlayerGiveRocketGuyAttention:
 	ld [wWhichEmotionBubble], a ; EXCLAMATION_BUBBLE
 	predef EmotionBubble
 	ld a, TEXT_UNDERGROUNDPATHPALLETVIRIDIAN_ROCKETGUY_NOPKMN
-	ldh [hSpriteIndexOrTextID], a
+	ldh [hTextID], a
 	call DisplayTextID
 	ld a, SCRIPT_UNDERGROUNDPATHPALLETVIRIDIAN_ROCKETGUY_WALKS_TO_PLAYER
 	ld [wUndergroundPathPalletViridianCurScript], a
@@ -105,7 +105,7 @@ UndergroundPathPalletViridianRocketGuyTalkToPlayerScript:
 	ld [wJoyIgnore], a
 	call PlayDefaultMusic ; reset to map music
 	ld a, TEXT_UNDERGROUNDPATHPALLETVIRIDIAN_ROCKETGUY
-	ldh [hSpriteIndexOrTextID], a
+	ldh [hTextID], a
 	call DisplayTextID
 
 	ld a, SCRIPT_UNDERGROUNDPATHPALLETVIRIDIAN_ROCKETGUY_WALKS_BACK
