@@ -5,10 +5,10 @@ DisplayPokemonCenterDialogue_::
 	ld a, [wPartyCount]
 	and a
 	jp z, .declinedHealing
-	ld hl, wd72e
-	bit 2, [hl]
-	set 1, [hl]
-	set 2, [hl]
+	ld hl, wStatusFlags4
+	bit BIT_USED_POKECENTER, [hl]
+	set BIT_UNKNOWN_4_1, [hl]
+	set BIT_USED_POKECENTER, [hl]
 	jr nz, .skipShallWeHealYourPokemon
 	ld hl, ShallWeHealYourPokemonText
 	call PrintText
