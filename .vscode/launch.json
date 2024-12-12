@@ -7,9 +7,19 @@
     {
       "type": "emulicious-debugger",
       "request": "launch",
-      "name": "Launch in Emulicious",
+      "name": "OpenWalk Blaue-Edition",
       // "program": "${workspaceFolder}/${command:AskForProgramName}",
       "program": "${workspaceFolder}/pokeblue_debug.gbc",
+      "port": 58870,
+      "stopOnEntry": false,
+      "preLaunchTask": "Build"
+    },
+    {
+      "type": "emulicious-debugger",
+      "request": "launch",
+      "name": "OpenWalk Rote-Edition",
+      // "program": "${workspaceFolder}/${command:AskForProgramName}",
+      "program": "${workspaceFolder}/pokered_debug.gbc",
       "port": 58870,
       "stopOnEntry": false,
       "preLaunchTask": "Build"
