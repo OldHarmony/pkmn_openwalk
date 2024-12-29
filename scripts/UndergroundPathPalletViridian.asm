@@ -204,6 +204,9 @@ UndergroundPathPalletViridianResetScript:
 	and a
 	jr nz, .noSelected
 .yesSelected
+	ld a, HS_UNDERGROUNDPATHPALLETVIRIDIAN_ROCKETGUY
+	ld [wMissableObjectIndex], a
+	predef HideObject
 	ld a, SCRIPT_UNDERGROUNDPATHPALLETVIRIDIAN_NOOP
 	ld [wUndergroundPathPalletViridianCurScript], a
 	ret
