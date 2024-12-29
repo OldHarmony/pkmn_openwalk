@@ -112,9 +112,8 @@ MapHSPointers:
 	dw NoHS
 	dw NoHS
 	dw VictoryRoad1FHS
-;	dw UndergroundPathPalletTownHS
 	dw NoHS
-	dw NoHS
+	dw UndergroundPathPalletTownHS
 	dw NoHS
 	dw NoHS
 	dw NoHS
@@ -545,6 +544,8 @@ CeruleanCaveB1FHS:
 VictoryRoad1FHS:
 	db VICTORY_ROAD_1F, VICTORYROAD1F_TM_SKY_ATTACK, SHOW
 	db VICTORY_ROAD_1F, VICTORYROAD1F_RARE_CANDY,    SHOW
+UndergroundPathPalletTownHS:
+	db UNDERGROUND_PATH_PALLETTOWN_VIRIDIANCITY, UNDERGROUNDPATHPALLETVIRIDIAN_ROCKETGUY, HIDE
 ChampionsRoomHS:
 	db CHAMPIONS_ROOM, CHAMPIONSROOM_OAK, HIDE
 SeafoamIslands1FHS:
