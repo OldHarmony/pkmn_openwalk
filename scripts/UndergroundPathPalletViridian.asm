@@ -25,6 +25,10 @@ UndergroundPathPalletViridianDefaultScript:
 	ld hl, .RocketGuy_sees_Player_Coords
 	call ArePlayerCoordsInArray
 	ret nc
+IF DEF(_DEBUG)
+	call DebugPressedOrHeldB
+	ret nz
+ENDC
 	ld a, SELECT | START | D_RIGHT | D_LEFT | D_UP | D_DOWN
 	ld [wJoyIgnore], a
 	ld a, SFX_STOP_ALL_MUSIC

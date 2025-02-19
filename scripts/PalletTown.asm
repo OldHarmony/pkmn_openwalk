@@ -19,6 +19,10 @@ PalletTown_ScriptPointers:
 	dw_const PalletTownNoopScript,                 SCRIPT_PALLETTOWN_NOOP
 
 PalletTownDefaultScript:
+IF DEF(_DEBUG)
+	call DebugPressedOrHeldB
+	ret nz
+ENDC
 	CheckEvent EVENT_FOLLOWED_OAK_INTO_LAB
 	ret nz
 	ld a, [wYCoord]
