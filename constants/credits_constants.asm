@@ -69,6 +69,7 @@
 	const CRED_NOAPRODTEST    ; $42
 	const CRED_HUDSONBUECHELE ; $43
 	const CRED_OLDHARMONY     ; $44
+	const CRED_WRUTSCHGELUCK  ; $45
 DEF NUM_CRED_STRINGS EQU const_value
 
 	const_def -1, -1

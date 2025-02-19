@@ -70,6 +70,7 @@ CreditsTextPointers:
 	dw CredNoAProdTest
 	dw CredHudsonAndBuechele
 	dw CredOldHarmony
+	dw CredWrutschgeluck
 	assert_table_length NUM_CRED_STRINGS
 
 CredVersion:
@@ -87,6 +88,8 @@ CredMorimoto:
 	db -6, "SHIGEKI MORIMOTO@"
 CredOldHarmony:
 	db -5, "OLD HARMONY@"
+CredWrutschgeluck:
+	db -6, "WRUTSCHGELUCK@"
 CredWatanabe:
 	db -7, "TETSUYA WATANABE@"
 CredMasuda:
