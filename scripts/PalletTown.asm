@@ -59,6 +59,19 @@ PalletTownOakHeyWaitScript:
 	ld [wMissableObjectIndex], a
 	predef ShowObject
 
+    ld a, [wXCoord]
+	cp 14
+	jp z, .next
+	ld a, PALLETTOWN_OAK
+	ld [wSpriteIndex], a
+	call GetSpritePosition1
+	ldh a, [hSpriteMapXCoord]
+	inc a
+	ldh [hSpriteMapXCoord], a
+	ld a, PALLETTOWN_OAK
+	ld [wSpriteIndex], a
+	call SetSpritePosition1
+.next
 	; trigger the next script
 	ld a, SCRIPT_PALLETTOWN_OAK_WALKS_TO_PLAYER
 	ld [wPalletTownCurScript], a
