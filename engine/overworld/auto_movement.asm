@@ -53,7 +53,7 @@ PalletMovementScriptPointerTable::
 
 PalletMovementScript_OakMoveLeft:
 	ld a, [wXCoord]
-	sub $a
+	sub 14
 	ld [wNumStepsToTake], a
 	jr z, .playerOnLeftTile
 ; The player is on the right tile of the northern path out of Pallet Town and
@@ -128,9 +128,9 @@ PalletMovementScript_WalkToLab:
 	ret
 
 RLEList_ProfOakWalkToLab:
-	db NPC_MOVEMENT_DOWN, 5
-	db NPC_MOVEMENT_LEFT, 1
-	db NPC_MOVEMENT_DOWN, 5
+	db NPC_MOVEMENT_DOWN, 2
+	db NPC_MOVEMENT_LEFT, 5
+	db NPC_MOVEMENT_DOWN, 10
 	db NPC_MOVEMENT_RIGHT, 3
 	db NPC_MOVEMENT_UP, 1
 	db NPC_CHANGE_FACING, 1
@@ -139,9 +139,9 @@ RLEList_ProfOakWalkToLab:
 RLEList_PlayerWalkToLab:
 	db D_UP, 2
 	db D_RIGHT, 3
-	db D_DOWN, 5
-	db D_LEFT, 1
-	db D_DOWN, 6
+	db D_DOWN, 10
+	db D_LEFT, 5
+	db D_DOWN, 3
 	db -1 ; end
 
 PalletMovementScript_Done:
