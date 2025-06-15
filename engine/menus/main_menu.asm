@@ -730,4 +730,4 @@ CheckForPlayerNameInSRAM:
 	ret
 
 VersionText:
-	db "Openwalk v0.1@"
+	db "Openwalk v0.1.1@"
