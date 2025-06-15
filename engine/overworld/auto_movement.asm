@@ -55,30 +55,8 @@ PalletMovementScript_OakMoveLeft:
 	ld a, [wXCoord]
 	sub 14
 	ld [wNumStepsToTake], a
-	jr z, .playerOnLeftTile
-; The player is on the right tile of the northern path out of Pallet Town and
-; Prof. Oak is below.
-; Make Prof. Oak step to the left.
-	ld b, 0
-	ld c, a
-	ld hl, wNPCMovementDirections2
-	ld a, NPC_MOVEMENT_LEFT
-	call FillMemory
-	ld [hl], $ff
-	ld a, [wSpriteIndex]
-	ldh [hSpriteIndex], a
-	ld de, wNPCMovementDirections2
-	call MoveSprite
-	ld a, $1
-	ld [wNPCMovementScriptFunctionNum], a
-	jr .done
-; The player is on the left tile of the northern path out of Pallet Town and
-; Prof. Oak is below.
-; Prof. Oak is already where he needs to be.
-.playerOnLeftTile
 	ld a, $3
 	ld [wNPCMovementScriptFunctionNum], a
-.done
 	ld hl, wStatusFlags7
 	set BIT_NO_MAP_MUSIC, [hl]
 	ld a, SELECT | START | D_RIGHT | D_LEFT | D_UP | D_DOWN
@@ -112,12 +90,26 @@ PalletMovementScript_WalkToLab:
 	xor a
 	ld [wSpritePlayerStateData2MovementByte1], a
 	ld hl, wSimulatedJoypadStatesEnd
-	ld de, RLEList_PlayerWalkToLab
+	ld a, [wXCoord]
+	sub 14
+	jr z, .PlayerWalkToLab_Cord14
+	ld de, RLEList_PlayerWalkToLab_Cord15
+	jp .DecodeRLEList_Player
+.PlayerWalkToLab_Cord14
+	ld de, RLEList_PlayerWalkToLab_Cord14
+.DecodeRLEList_Player
 	call DecodeRLEList
 	dec a
 	ld [wSimulatedJoypadStatesIndex], a
 	ld hl, wNPCMovementDirections2
-	ld de, RLEList_ProfOakWalkToLab
+	ld a, [wXCoord]
+	sub 14
+	jr z, .ProfOakWalkToLab_Cord14
+	ld de, RLEList_ProfOakWalkToLab_Cord15
+	jp .DecodeRLEList_Oak
+.ProfOakWalkToLab_Cord14
+	ld de, RLEList_ProfOakWalkToLab_Cord14
+.DecodeRLEList_Oak
 	call DecodeRLEList
 	ld hl, wStatusFlags4
 	res BIT_INIT_SCRIPTED_MOVEMENT, [hl]
@@ -127,7 +119,7 @@ PalletMovementScript_WalkToLab:
 	ld [wNPCMovementScriptFunctionNum], a
 	ret
 
-RLEList_ProfOakWalkToLab:
+RLEList_ProfOakWalkToLab_Cord14:
 	db NPC_MOVEMENT_DOWN, 2
 	db NPC_MOVEMENT_LEFT, 5
 	db NPC_MOVEMENT_DOWN, 10
@@ -136,11 +128,28 @@ RLEList_ProfOakWalkToLab:
 	db NPC_CHANGE_FACING, 1
 	db -1 ; end
 
-RLEList_PlayerWalkToLab:
+RLEList_PlayerWalkToLab_Cord14:
 	db D_UP, 2
 	db D_RIGHT, 3
 	db D_DOWN, 10
 	db D_LEFT, 5
+	db D_DOWN, 3
+	db -1 ; end
+
+RLEList_ProfOakWalkToLab_Cord15:
+	db NPC_MOVEMENT_DOWN, 2
+	db NPC_MOVEMENT_LEFT, 6
+	db NPC_MOVEMENT_DOWN, 10
+	db NPC_MOVEMENT_RIGHT, 3
+	db NPC_MOVEMENT_UP, 1
+	db NPC_CHANGE_FACING, 1
+	db -1 ; end
+
+RLEList_PlayerWalkToLab_Cord15:
+	db D_UP, 2
+	db D_RIGHT, 3
+	db D_DOWN, 10
+	db D_LEFT, 6
 	db D_DOWN, 3
 	db -1 ; end
 
