@@ -22,6 +22,8 @@ jobs:
       - name: Install rgbds
         working-directory: rgbds
         run: |
+          sudo apt update
+          sudo apt -y install libpng-dev
           sudo make install
 
       - name: Remove rgbds
